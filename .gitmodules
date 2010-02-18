@@ -1,0 +1,27 @@
+[submodule "system"]
+	path = system
+	url = git://github.com/synapsestudios/core
+[submodule "modules/orm"]
+	path = modules/orm
+	url = git://github.com/synapsestudios/orm
+[submodule "modules/database"]
+	path = modules/database
+	url = git://github.com/synapsestudios/database
+[submodule "modules/unittest"]
+	path = modules/unittest
+	url = git://github.com/synapsestudios/unittest
+[submodule "modules/auth"]
+	path = modules/auth
+	url = git://github.com/synapsestudios/auth
+[submodule "modules/image"]
+	path = modules/image
+	url = git://github.com/synapsestudios/image
+[submodule "modules/pagination"]
+	path = modules/pagination
+	url = git://github.com/synapsestudios/pagination
+[submodule "modules/codebench"]
+	path = modules/codebench
+	url = git://github.com/synapsestudios/codebench
+[submodule "modules/userguide"]
+	path = modules/userguide
+	url = git://github.com/synapsestudios/userguide
