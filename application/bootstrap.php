@@ -3,6 +3,22 @@
 //-- Environment setup --------------------------------------------------------
 
 /**
+ * Set the Kohana Environment
+ */
+Kohana::$environment = 'development';
+
+/**
+ * If Kohana is running on a local machine then adjust the environment.
+ */
+$computer_name = @getenv('COMPUTERNAME');
+define('RUNNING_LOCALLY', ! empty($computer_name));
+if (RUNNING_LOCALLY)
+{
+	Kohana::$environment = strtolower(URL::title($computer_name));
+}
+unset($computer_name);
+
+/**
  * Set the default time zone.
  *
  * @see  http://docs.kohanaphp.com/about.configuration
@@ -37,6 +53,27 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
 //-- Configuration and initialization -----------------------------------------
 
 /**
+ * Attach a file reader to config. Multiple readers are supported.
+ */
+Kohana_Config::instance()->attach(new Kohana_Config_File);
+
+/**
+ * Attach the environment specific configuration file reader to config if not in production.
+ */
+if (Kohana::$environment != 'production')
+{
+	if (RUNNING_LOCALLY)
+	{
+		Kohana_Config::instance()->attach(new Kohana_Config_File('config/environments/development'));
+		Kohana_Config::instance()->attach(new Kohana_Config_File('config/environments/local/'.Kohana::$environment));
+	}
+	else
+	{
+		Kohana_Config::instance()->attach(new Kohana_Config_File('config/environments/'.Kohana::$environment));
+	}
+}
+
+/**
  * Initialize Kohana, setting the default options.
  *
  * The following options are available:
@@ -49,7 +86,7 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  * - boolean  profile     enable or disable internal profiling               TRUE
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
-Kohana::init(array('base_url' => '/'));
+Kohana::init(Kohana_Config::instance()->load('init')->as_array());
 
 /**
  * Attach the file write to logging. Multiple writers are supported.
@@ -57,23 +94,9 @@ Kohana::init(array('base_url' => '/'));
 Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
 
 /**
- * Attach a file reader to config. Multiple readers are supported.
- */
-Kohana::$config->attach(new Kohana_Config_File);
-
-/**
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
-Kohana::modules(array(
-	'auth'			=> MODPATH.'auth',       // Basic authentication
-	// 'codebench'	=> MODPATH.'codebench',  // Benchmarking tool
-	'database'		=> MODPATH.'database',   // Database access
-	// 'image'		=> MODPATH.'image',      // Image manipulation
-	'orm'			=> MODPATH.'orm',        // Object Relationship Mapping
-	// 'pagination'	=> MODPATH.'pagination', // Paging of results
-	'unittest'		=> MODPATH.'unittest',   // Unit Testing via PHPUnit
-	// 'userguide'	=> MODPATH.'userguide',  // User guide and API documentation
-	));
+Kohana::modules(Kohana::config('modules')->as_array());
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
