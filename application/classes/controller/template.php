@@ -28,10 +28,12 @@ abstract class Controller_Template extends Kohana_Controller_Template {
 		$action = $this->request->action;
 
 		// Removes leading slash if this is not a subdirectory controller
-		$path = trim($directory.'/'.$controller.'/'.$action, '/');
+		$controller_path = trim($directory.'/'.$controller.'/'.$action, '/');
 
-		$this->title = Kohana::message('titles', $path);
-		$this->content = View::factory($path);
+		$message_path = str_replace('/', '.', $controller_path);
+
+		$this->title = Kohana::message('titles', $message_path, $message_path);
+		$this->content = View::factory($controller_path);
 	}
 
 	/**
