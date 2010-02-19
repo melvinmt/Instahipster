@@ -8,17 +8,6 @@
 Kohana::$environment = 'development';
 
 /**
- * If Kohana is running on a local machine then adjust the environment.
- */
-$computer_name = @getenv('COMPUTERNAME');
-define('RUNNING_LOCALLY', ! empty($computer_name));
-if (RUNNING_LOCALLY)
-{
-	Kohana::$environment = strtolower(URL::title($computer_name));
-}
-unset($computer_name);
-
-/**
  * Set the default time zone.
  *
  * @see  http://docs.kohanaphp.com/about.configuration
@@ -62,15 +51,16 @@ Kohana_Config::instance()->attach(new Kohana_Config_File);
  */
 if (Kohana::$environment != 'production')
 {
-	if (RUNNING_LOCALLY)
+	Kohana_Config::instance()->attach(new Kohana_Config_File('config/environments/'.Kohana::$environment));
+
+	$computer_name = strtolower(URL::title(@getenv('COMPUTERNAME')));
+
+	if ( ! empty($computer_name))
 	{
-		Kohana_Config::instance()->attach(new Kohana_Config_File('config/environments/development'));
-		Kohana_Config::instance()->attach(new Kohana_Config_File('config/environments/local/'.Kohana::$environment));
+		Kohana_Config::instance()->attach(new Kohana_Config_File('config/environments/local/'.$computer_name));
 	}
-	else
-	{
-		Kohana_Config::instance()->attach(new Kohana_Config_File('config/environments/'.Kohana::$environment));
-	}
+
+	unset($computer_name);
 }
 
 /**
