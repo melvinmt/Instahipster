@@ -8,9 +8,31 @@ abstract class Controller_Template extends Kohana_Controller_Template {
 	public $template = 'templates/default';
 
 	/**
+	 *
+	 * @var object the content View object
+	 */
+	public $content;
+
+	/**
 	 * @var  string  page title
 	 */
-	public $title = 'New World';
+	public $title;
+
+	public function before()
+	{
+		parent::before();
+
+		// Set default title and content views (path only)
+		$directory = $this->request->directory;
+		$controller = $this->request->controller;
+		$action = $this->request->action;
+
+		// Removes leading slash if this is not a subdirectory controller
+		$path = trim($directory.'/'.$controller.'/'.$action, '/');
+
+		$this->title = Kohana::message('titles', $path);
+		$this->content = View::factory($path);
+	}
 
 	/**
 	 * Assigns the title to the template.
@@ -20,7 +42,15 @@ abstract class Controller_Template extends Kohana_Controller_Template {
 	 */
 	public function after()
 	{
-		$this->template->title = $this->title;
+		if ($this->auto_render === TRUE)
+		{
+			/**
+			 * Assign these at the very last moment
+			 * This allows the actions to replace these values
+			 */
+			$this->template->content = $this->content;
+			$this->template->title = $this->title;
+		}
 		parent::after();
 	}
 
