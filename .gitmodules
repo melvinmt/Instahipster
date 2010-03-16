@@ -25,3 +25,6 @@
 [submodule "modules/userguide"]
 	path = modules/userguide
 	url = git://github.com/synapsestudios/userguide
+[submodule "modules/jssettings"]
+	path = modules/jssettings
+	url = git@syn0.com:synmod-jssettings.git
