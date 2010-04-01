@@ -37,3 +37,6 @@
 [submodule "modules/email"]
 	path = modules/email
 	url = git://github.com/synapsestudios/kohana-email.git
+[submodule "modules/assets"]
+	path = modules/assets
+	url = git://github.com/synapsestudios/assets.git
