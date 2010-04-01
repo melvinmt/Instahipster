@@ -28,3 +28,12 @@
 [submodule "modules/jssettings"]
 	path = modules/jssettings
 	url = git@syn0.com:synmod-jssettings.git
+[submodule "modules/errors"]
+	path = modules/errors
+	url = git@syn0.com:synmod-errors.git
+[submodule "modules/notices"]
+	path = modules/notices
+	url = git@syn0.com:synmod-notices.git
+[submodule "modules/email"]
+	path = modules/email
+	url = git://github.com/synapsestudios/kohana-email.git
