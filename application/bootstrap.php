@@ -5,7 +5,7 @@
 /**
  * Set the Kohana Environment
  */
-Kohana::$environment = 'development';
+Kohana::$environment = Kohana::DEVELOPMENT;
 
 /**
  * Set the default time zone.
@@ -21,7 +21,7 @@ date_default_timezone_set('America/Phoenix');
  * @see  http://docs.kohanaphp.com/about.configuration
  * @see  http://php.net/setlocale
  */
-setlocale(LC_ALL, 'en_US.utf-8');
+setlocale(LC_ALL, 'en_US.utf-8', 'english-us');
 
 /**
  * Enable the Kohana auto-loader.
@@ -49,7 +49,7 @@ Kohana_Config::instance()->attach(new Kohana_Config_File);
 /**
  * Attach the environment specific configuration file reader to config if not in production.
  */
-if (Kohana::$environment != 'production')
+if (Kohana::$environment != Kohana::PRODUCTION)
 {
 	Kohana_Config::instance()->attach(new Kohana_Config_File('config/environments/'.Kohana::$environment));
 
