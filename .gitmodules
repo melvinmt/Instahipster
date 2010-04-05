@@ -1,42 +1,42 @@
 [submodule "system"]
 	path = system
-	url = git://github.com/synapsestudios/core
+	url = git://github.com/synapsestudios/kohana-core
 [submodule "modules/orm"]
 	path = modules/orm
-	url = git://github.com/synapsestudios/orm
+	url = git://github.com/synapsestudios/kohana-orm
 [submodule "modules/database"]
 	path = modules/database
-	url = git://github.com/synapsestudios/database
+	url = git://github.com/synapsestudios/kohana-database
 [submodule "modules/unittest"]
 	path = modules/unittest
-	url = git://github.com/synapsestudios/unittest
+	url = git://github.com/synapsestudios/kohana-unittest
 [submodule "modules/auth"]
 	path = modules/auth
-	url = git://github.com/synapsestudios/auth
+	url = git://github.com/synapsestudios/kohana-auth
 [submodule "modules/image"]
 	path = modules/image
-	url = git://github.com/synapsestudios/image
+	url = git://github.com/synapsestudios/kohana-image
 [submodule "modules/pagination"]
 	path = modules/pagination
-	url = git://github.com/synapsestudios/pagination
+	url = git://github.com/synapsestudios/kohana-pagination
 [submodule "modules/codebench"]
 	path = modules/codebench
-	url = git://github.com/synapsestudios/codebench
+	url = git://github.com/synapsestudios/kohana-codebench
 [submodule "modules/userguide"]
 	path = modules/userguide
-	url = git://github.com/synapsestudios/userguide
+	url = git://github.com/synapsestudios/kohana-userguide
 [submodule "modules/jssettings"]
 	path = modules/jssettings
-	url = git@syn0.com:synmod-jssettings.git
+	url = git://github.com/synapsestudios/kohana-jssettings.git
 [submodule "modules/errors"]
 	path = modules/errors
-	url = git@syn0.com:synmod-errors.git
+	url = git://github.com/synapsestudios/kohana-errors
 [submodule "modules/notices"]
 	path = modules/notices
-	url = git@syn0.com:synmod-notices.git
+	url = git://github.com/synapsestudios/kohana-notices
 [submodule "modules/email"]
 	path = modules/email
 	url = git://github.com/synapsestudios/kohana-email.git
 [submodule "modules/assets"]
 	path = modules/assets
-	url = git://github.com/synapsestudios/assets.git
+	url = git://github.com/synapsestudios/kohana-assets.git
