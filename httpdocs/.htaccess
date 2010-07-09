@@ -10,8 +10,13 @@ RewriteBase /
 	Deny From All
 </Files>
 
+# Force to always use the domain without the 'www' prefix. Change domain.com and uncomment below
+# RewriteCond %{HTTP_HOST} ^www.domain.com
+# RewriteRule ^(.*)$ http://domain.com/$1 [R=301,L]
+
 # Protect application and system files from being viewed
-RewriteRule ^(?:application|modules|system)\b - [F,L]
+# We do this by keeping these directories out of the web root so this rule is not needed
+# RewriteRule ^(?:application|modules|system)\b - [F,L]
 
 # Allow any files or directories that exist to be displayed directly
 RewriteCond %{REQUEST_FILENAME} !-f
