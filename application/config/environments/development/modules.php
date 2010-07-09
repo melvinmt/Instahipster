@@ -1,13 +1,23 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
 return array(
-	'auth'       => MODPATH.'auth',       // Basic authentication
-	'codebench'  => MODPATH.'codebench',  // Benchmarking tool
-	'database'   => MODPATH.'database',   // Database access
-	'image'      => MODPATH.'image',      // Image manipulation
-	'orm'        => MODPATH.'orm',        // Object Relationship Mapping
-	'pagination' => MODPATH.'pagination', // Paging of results
-	'userguide'  => MODPATH.'userguide',  // User guide and API documentation
-	'notices'	 => MODPATH.'notices',    // User notices
-	'debug'		 => MODPATH.'debug',      // Debugging tool
+	'acl'                => MODPATH.'acl',
+	'assets'             => MODPATH.'assets',
+	'auth'               => MODPATH.'auth',
+	'codebench'          => MODPATH.'codebench',
+	'csrf'               => MODPATH.'csrf',
+	'database'           => MODPATH.'database',
+	'doctrinemigrations' => MODPATH.'doctrinemigrations',
+	'email'              => MODPATH.'email',
+	'errors'             => MODPATH.'errors',
+	'image'              => MODPATH.'image',
+	'jssettings'         => MODPATH.'jssettings',
+	'kostache'           => MODPATH.'kostache',
+	'less'               => MODPATH.'less',
+	'notices'            => MODPATH.'notices',
+	'orm'                => MODPATH.'orm',
+	'pagination'         => MODPATH.'pagination',
+	'unittest'           => MODPATH.'unittest',
+	'userguide'          => MODPATH.'userguide',
+	'yform'              => MODPATH.'yform',
 );
