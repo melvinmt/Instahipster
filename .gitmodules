@@ -40,3 +40,21 @@
 [submodule "modules/assets"]
 	path = modules/assets
 	url = git://github.com/synapsestudios/kohana-assets.git
+[submodule "modules/acl"]
+	path = modules/acl
+	url = git@github.com:synapsestudios/kohana-acl.git
+[submodule "modules/csrf"]
+	path = modules/csrf
+	url = git@github.com:synapsestudios/kohana-csrf.git
+[submodule "modules/yform"]
+	path = modules/yform
+	url = git@github.com:synapsestudios/kohana-yform.git
+[submodule "modules/less"]
+	path = modules/less
+	url = git@github.com:synapsestudios/kohana-less.git
+[submodule "modules/doctrinemigrations"]
+	path = modules/doctrinemigrations
+	url = git@github.com:synapsestudios/kohana-doctrinemigrations
+[submodule "modules/kostache"]
+	path = modules/kostache
+	url = git@github.com:synapsestudios/kohana-kostache
