@@ -76,30 +76,43 @@ abstract class Controller_Website extends Controller_Template {
 	}
 
 	/**
-	 * Returns true if POST data is present and the CSRF token is valid
+	 * Returns true if the request has a valid CSRF
 	 *
 	 * @param   string the namespace used in the form csrf field
 	 * @param   bool   TRUE if an invalid CSRF token causes a notice to be sent (optional, default TRUE)
 	 * @return  bool
 	 */
-	public function valid_post($form = 'default', $auto_notice = TRUE)
+	public function valid_request($namespace = 'default', $method = 'post')
 	{
-		Request::handle_big_uploads();
+		if (Request::upload_too_large())
+		{
+			echo 'fail';
+			Notices::add('error', __('Max filesize of :max exceeded.', array(':max' => ini_get('post_max_size').'B')));
+			return FALSE;
+		}
 
-		$has_csrf = isset($_POST['csrf-token']);
-		
-		$csrf_valid = $has_csrf ? Security::check($_POST['csrf-token']) : FALSE;
-		
-		if ($regen_token)
+		if ($method == 'post')
 		{
-			Security::token(TRUE);
+			$values = $_POST;
 		}
-		
-		if ($notify_if_invalid && ($has_csrf && ! $csrf_valid))
+		elseif ($method == 'get')
 		{
-			Notices::error('general.form-expired');
+			$values = $_GET;
 		}
-		
-		return $has_csrf && $csrf_valid;
+
+		$has_csrf = isset($values['csrf-token-'.$namespace]);
+
+		$valid_csrf = $has_csrf 
+			? CSRF::valid($namespace, $values['csrf-token-'.$namespace])
+			: FALSE;
+
+		if ($has_csrf && ! $valid_csrf)
+		{
+			die(Kohana::debug($valid_csrf));
+			Notices::add('error', __('This form has expired. Please try submitting it again.'));
+			return FALSE;
+		}
+
+		return $has_csrf && $valid_csrf;
 	}
 }
