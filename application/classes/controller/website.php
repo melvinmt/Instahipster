@@ -107,7 +107,6 @@ abstract class Controller_Website extends Controller_Template {
 
 		if ($has_csrf && ! $valid_csrf)
 		{
-			die(Kohana::debug($valid_csrf));
 			Notices::add('error', __('This form has expired. Please try submitting it again.'));
 			return FALSE;
 		}
