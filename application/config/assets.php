@@ -4,6 +4,10 @@ return array
 (
 	'default-template' => array
 	(
+		// Very important for these 2 to be loaded first
+		array(HTML::style('media/packages/restyle/reset.css'), -100),
+		array(HTML::style('media/packages/restyle/restyle.css'), -90),
+
 		array(HTML::style('media/css/styles.css')),
 		array(HTML::style('media/packages/notices/css/notices.css')),
 		array(HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js')),
