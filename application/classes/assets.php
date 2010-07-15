@@ -33,7 +33,10 @@ class Assets
 			if (($group = Kohana::config('assets.'.$name)) !== NULL)
 			{
 				// Reverse the array to make it act a little more logically
-				$assets += array_reverse($group);
+				foreach (array_reverse($group) as $asset)
+				{
+					$assets[] = $asset;
+				}
 			}
 			else
 			{
