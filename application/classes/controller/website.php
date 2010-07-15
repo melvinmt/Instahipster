@@ -86,7 +86,6 @@ abstract class Controller_Website extends Controller_Template {
 	{
 		if (Request::upload_too_large())
 		{
-			echo 'fail';
 			Notices::add('error', __('Max filesize of :max exceeded.', array(':max' => ini_get('post_max_size').'B')));
 			return FALSE;
 		}
