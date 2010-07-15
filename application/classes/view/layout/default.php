@@ -7,7 +7,10 @@ class View_Layout_Default extends View_Website {
 
 	public function _initialize()
 	{
-		Assets::add_group('default-template');
+		Assets::add_group(array
+		(
+			'default-template', 'jquery-ui',
+		));
 	}
 
 	public function assets()
