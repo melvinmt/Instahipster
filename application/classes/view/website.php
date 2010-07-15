@@ -11,4 +11,15 @@ abstract class View_Website extends Kostache {
 	{
 		return View::factory('profiler/stats');
 	}
+
+	public function assets()
+	{
+		$assets = array();
+		foreach (Assets::get() as $asset)
+		{
+			$assets[] = array('asset' => $asset);
+		}
+
+		return $assets;
+	}
 }

@@ -12,15 +12,4 @@ class View_Layout_Default extends View_Website {
 			'default-template', 'jquery-ui',
 		));
 	}
-
-	public function assets()
-	{
-		$assets = array();
-		foreach (Assets::get() as $asset)
-		{
-			$assets[] = array('asset' => $asset);
-		}
-
-		return $assets;
-	}
 }
