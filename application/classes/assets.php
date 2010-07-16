@@ -41,7 +41,7 @@ class Assets
 			else
 			{
 				// Log a warning
-				Kohana::log(Kohana::INFO, 'Could not find assets group `'.$name.'`');
+				Kohana::$log->add(Kohana::INFO, 'Could not find assets group `'.$name.'`');
 			}
 		}
 
