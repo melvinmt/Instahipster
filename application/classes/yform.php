@@ -4,7 +4,7 @@ class YForm extends Yuriko_YForm
 {
 	public function open($action = NULL, array $attributes = array())
 	{
-		return $this->_form->open($action, $attributes)
+		return parent::open($action, $attributes)
 			.$this->csrf($this->_form->get_attribute('name', 'default'));
 	}
 
