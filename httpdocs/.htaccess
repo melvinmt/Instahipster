@@ -1,18 +1,50 @@
 # Turn on URL rewriting
 RewriteEngine On
 
+# Set the project name to use through the rest of this file
+RewriteRule .* - [E=PROJECTNAME:domain.com]
+
+# Check if request is on http or https
+RewriteCond %{SERVER_PORT}s ^(443(s)|[0-9]+s)$
+RewriteRule ^(.+)$ - [E=PROTOCOL:%2]
+
+# Force to always use the domain without the 'www' prefix.
+RewriteCond %{HTTP_HOST} ^www.%{ENV:PROJECTNAME}
+RewriteRule ^(.*)$ http%{ENV:PROTOCOL}://%{ENV:PROJECTNAME}/$1 [R=301,L]
+
+# Set staging environment based on domain
+RewriteCond %{HTTP_HOST} ^demo.synsit.es$
+RewriteCond %{REQUEST_URI},/%{ENV:PROJECTNAME}/ !^([^,]+),.*\1
+RewriteRule .* - [E=ENVIRONMENT:synsites-staging]
+
+# Set staging environment based on domain
+RewriteCond %{HTTP_HOST} ^demo.synsit.es$
+RewriteCond %{REQUEST_URI},/%{ENV:PROJECTNAME}-develop/ !^([^,]+),.*\1
+RewriteRule .* - [E=ENVIRONMENT:synsites-develop]
+
+# Set production environment based on domain
+RewriteCond %{HTTP_HOST} ^%{ENV:PROJECTNAME}$
+RewriteRule .* - [E=ENVIRONMENT:production]
+
 # Installation directory
-RewriteBase /
+RewriteCond %{ENV:ENVIRONMENT} !synsites-staging
+RewriteRule .* - [E=REWRITEBASE:/]
+
+# Staging Installation directory
+RewriteCond %{ENV:ENVIRONMENT} synsites-staging
+RewriteCond %{REQUEST_URI},/%{ENV:PROJECTNAME}/ !^([^,]+),.*\1
+RewriteRule .* - [E=REWRITEBASE:/%{ENV:PROJECTNAME}/]
+
+# Staging-Develop Installation directory
+RewriteCond %{ENV:ENVIRONMENT} synsites-staging
+RewriteCond %{REQUEST_URI},/%{ENV:PROJECTNAME}-develop/ !^([^,]+),.*\1
+RewriteRule .* - [E=REWRITEBASE:/%{ENV:PROJECTNAME}-develop/]
 
 # Protect hidden files from being viewed
 <Files .*>
-	Order Deny,Allow
-	Deny From All
+        Order Deny,Allow
+        Deny From All
 </Files>
-
-# Force to always use the domain without the 'www' prefix. Change domain.com and uncomment below
-# RewriteCond %{HTTP_HOST} ^www.domain.com
-# RewriteRule ^(.*)$ http://domain.com/$1 [R=301,L]
 
 # Protect application and system files from being viewed
 # We do this by keeping these directories out of the web root so this rule is not needed
@@ -23,4 +55,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # Rewrite all other URLs to index.php/URL
-RewriteRule .* index.php/$0 [PT]
+RewriteRule .* %{ENV:REWRITEBASE}index.php/$0 [PT]
