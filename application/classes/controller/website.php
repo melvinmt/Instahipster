@@ -22,9 +22,6 @@ abstract class Controller_Website extends Controller_Template {
 	{
 		if ($this->auto_render === TRUE)
 		{
-			// Load the template
-			$this->template = Kostache::factory($this->template);
-
 			// Set default title and content views (path only)
 			$directory = $this->request->directory;
 			$controller = $this->request->controller;
@@ -61,16 +58,23 @@ abstract class Controller_Website extends Controller_Template {
 	{
 		if ($this->auto_render === TRUE)
 		{
+			// Load the template
+			$this->template = Kostache::factory($this->template);
+			$this->template->title = $this->title;
+
 			// If content is NULL, then there is no View to render
 			if ($this->content === NULL)
 				throw new Kohana_View_Exception('There was no View created for this request.');
 
-			/**
-			 * Assign these at the very last moment
-			 * This allows the actions to replace these values
-			 */
-			$this->template->content = $this->content;
-			$this->template->title = $this->title;
+			// Some layouts might not have a content View
+			if ($this->content !== FALSE)
+			{
+				/**
+				 * Assign these at the very last moment
+				 * This allows the actions to replace these values
+				 */
+				$this->template->content = $this->content;
+			}
 		}
 		parent::after();
 	}
