@@ -1,22 +1,16 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-abstract class Controller_Website extends Controller_Template {
+abstract class Controller_Website extends Controller {
 
 	/**
-	 * @var  string  page template
-	 */
-	public $template = 'layout/default';
+	 * @var  boolean  auto render view
+	 **/
+	public $auto_render = TRUE;
 
 	/**
-	 *
 	 * @var object the content View object
 	 */
-	public $content;
-
-	/**
-	 * @var  string  page title
-	 */
-	public $title;
+	public $view;
 
 	public function before()
 	{
@@ -29,13 +23,10 @@ abstract class Controller_Website extends Controller_Template {
 
 			// Removes leading slash if this is not a subdirectory controller
 			$controller_path = trim($directory.'/'.$controller.'/'.$action, '/');
-			$message_path = str_replace('/', '.', $controller_path);
-
-			$this->title = Kohana::message('titles', $message_path, $message_path);
 
 			try
 			{
-				$this->content = Kostache::factory($controller_path);
+				$this->view = Kostache::factory($controller_path);
 			}
 			catch (Exception $x)
 			{
@@ -43,7 +34,7 @@ abstract class Controller_Website extends Controller_Template {
 				 * The View class could not be found, so the controller action is
 				 * repsonsible for making sure this is resolved.
 				 */
-				$this->content = NULL;
+				$this->view = NULL;
 			}
 		}
 	}
@@ -58,25 +49,12 @@ abstract class Controller_Website extends Controller_Template {
 	{
 		if ($this->auto_render === TRUE)
 		{
-			// Load the template
-			$this->template = Kostache::factory($this->template);
-			$this->template->title = $this->title;
-
 			// If content is NULL, then there is no View to render
-			if ($this->content === NULL)
+			if ($this->view === NULL)
 				throw new Kohana_View_Exception('There was no View created for this request.');
 
-			// Some layouts might not have a content View
-			if ($this->content !== FALSE)
-			{
-				/**
-				 * Assign these at the very last moment
-				 * This allows the actions to replace these values
-				 */
-				$this->template->content = $this->content;
-			}
+			$this->request->response = $this->view;
 		}
-		parent::after();
 	}
 
 	/**
