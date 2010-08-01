@@ -2,6 +2,20 @@
 
 abstract class View_Website extends Kostache {
 
+	protected $_partials = array
+	(
+		'header' => 'headers/default',
+		'footer' => 'footers/default',
+	);
+
+	public function title()
+	{
+		$class = get_class($this);
+		$title = str_replace('_', ' ', substr($class, 5));
+
+		return $this->title = __($title);
+	}
+
 	public function notices()
 	{
 		return Notices::display();
