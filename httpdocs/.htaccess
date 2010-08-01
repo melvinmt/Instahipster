@@ -2,7 +2,7 @@
 RewriteEngine On
 
 # Set the project name to use through the rest of this file
-RewriteRule .* - [E=PROJECTNAME:nestablish.com]
+RewriteRule .* - [E=PROJECTNAME:domain.com]
 
 # Check if request is on http or https
 RewriteCond %{SERVER_PORT}s ^(443(s)|[0-9]+s)$
