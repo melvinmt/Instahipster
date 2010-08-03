@@ -99,12 +99,18 @@ Route::set('default', '(<controller>(/<action>(/<id>)))')
 
 if ( ! defined('SUPPRESS_REQUEST'))
 {
+	$request = Request::instance();
+
+	if (Kohana::$is_cli)
+	{
+		Hook_CLI::init();
+	}
+
 	/**
 	 * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
 	 * If no source is specified, the URI will be automatically detected.
 	 */
-	echo Request::instance()
-		->execute()
+	echo $request->execute()
 		->send_headers()
 		->response;
 }
