@@ -58,13 +58,11 @@ abstract class Controller_Website extends Controller {
 	}
 
 	/**
-	 * Returns true if the request has a valid CSRF
-	 *
-	 * @param   string the namespace used in the form csrf field
-	 * @param   bool   TRUE if an invalid CSRF token causes a notice to be sent (optional, default TRUE)
+	 * Returns true if the post has a valid CSRF
+	 * 
 	 * @return  bool
 	 */
-	public function valid_request($namespace = 'default', $method = 'post')
+	public function valid_post()
 	{
 		if (Request::upload_too_large())
 		{
@@ -72,19 +70,10 @@ abstract class Controller_Website extends Controller {
 			return FALSE;
 		}
 
-		if ($method == 'post')
-		{
-			$values = $_POST;
-		}
-		elseif ($method == 'get')
-		{
-			$values = $_GET;
-		}
-
-		$has_csrf = isset($values['csrf-token-'.$namespace]);
+		$has_csrf = isset($_POST['csrf-token']);
 
 		$valid_csrf = $has_csrf 
-			? CSRF::valid($namespace, $values['csrf-token-'.$namespace])
+			? CSRF::valid($_POST['csrf-token'])
 			: FALSE;
 
 		if ($has_csrf && ! $valid_csrf)

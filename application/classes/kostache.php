@@ -2,6 +2,23 @@
 
 class Kostache extends Kohana_Kostache
 {
+	public static function factory($path, $template = null, $view = null, $partials = null)
+	{
+		// Check if the class exists exactly where it's defined
+		$file = Kohana::find_file('classes', 'view/'.$path);
+		if ($file)
+		{
+			include_once $file;
+		}
+
+		if ( ! $template AND Kohana::find_file('templates', $path, 'mustache'))
+		{
+			$template = $path;
+		}
+
+		return parent::factory($path, $template, $view, $partials);
+	}
+
 	public function __construct($template = null, $view = null, $partials = null)
 	{
 		parent::__construct($template, $view, $partials);

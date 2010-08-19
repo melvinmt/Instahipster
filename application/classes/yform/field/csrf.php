@@ -2,9 +2,9 @@
 
 class YForm_Field_Csrf extends YForm_Field_Hidden {
 
-	public function __construct($namespace = 'default')
+	public function __construct($name = 'default')
 	{
-		parent::__construct('csrf-token-'.$namespace, CSRF::token($namespace));
+		parent::__construct('csrf-token', CSRF::token());
 	}
 
 	public function load_settings(YForm $settings)

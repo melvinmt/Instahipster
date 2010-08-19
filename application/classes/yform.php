@@ -5,7 +5,7 @@ class YForm extends Yuriko_YForm
 	public function open($action = NULL, array $attributes = array())
 	{
 		return parent::open($action, $attributes)
-			.$this->csrf($this->_form->get_attribute('name', 'default'));
+			.$this->csrf('token');
 	}
 
 	public function open_multipart($action = NULL, array $attributes = array())
