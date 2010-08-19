@@ -2,28 +2,28 @@
 RewriteEngine On
 
 # Set the project name to use through the rest of this file
-RewriteRule .* - [E=PROJECTNAME:domain.com]
+RewriteRule .* - [E=PROJECTNAME:example.com]
 
-# Check if request is on http or https
-RewriteCond %{SERVER_PORT}s ^(443(s)|[0-9]+s)$
-RewriteRule ^(.+)$ - [E=PROTOCOL:%2]
+# Force to always use the domain without the 'www' prefix (non-ssl)
+#RewriteCond %{ENV:PROJECTNAME},%{HTTP_HOST} ^([^,]+),www\.\1
+#RewriteRule ^(.*)$ http://%{ENV:PROJECTNAME}/$1 [R=301,L]
 
-# Force to always use the domain without the 'www' prefix
-RewriteCond %{HTTP_HOST} ^www.%{ENV:PROJECTNAME}
-RewriteRule ^(.*)$ http%{ENV:PROTOCOL}://%{ENV:PROJECTNAME}/$1 [R=301,L]
+# Force to always use the HTTPS domain without the 'www' prefix (ssl)
+RewriteCond %{ENV:PROJECTNAME},%{HTTP_HOST} ^([^,]+),www\.\1
+RewriteRule ^(.*)$ https://%{ENV:PROJECTNAME}/$1 [R=301,L]
 
 # Set staging environment based on domain
 RewriteCond %{HTTP_HOST} ^demo.synsit.es$
-RewriteCond %{REQUEST_URI},/%{ENV:PROJECTNAME}/ !^([^,]+),.*\1
+RewriteCond %{ENV:PROJECTNAME},%{REQUEST_URI} ^([^,]+),/\1
 RewriteRule .* - [E=ENVIRONMENT:synsites-staging]
 
 # Set staging-develop environment based on domain
 RewriteCond %{HTTP_HOST} ^demo.synsit.es$
-RewriteCond %{REQUEST_URI},/%{ENV:PROJECTNAME}-develop/ !^([^,]+),.*\1
+RewriteCond %{ENV:PROJECTNAME},%{REQUEST_URI} ^([^,]+),/\1-develop
 RewriteRule .* - [E=ENVIRONMENT:synsites-develop]
 
 # Set production environment based on domain
-RewriteCond %{HTTP_HOST} ^%{ENV:PROJECTNAME}$
+RewriteCond %{ENV:PROJECTNAME},%{HTTP_HOST} ^([^,]+),\1
 RewriteRule .* - [E=ENVIRONMENT:production]
 
 # Installation directory
@@ -33,25 +33,23 @@ RewriteRule .* - [E=REWRITEBASE:/]
 
 # Staging Installation directory
 RewriteCond %{ENV:ENVIRONMENT} synsites-staging
-RewriteCond %{REQUEST_URI},/%{ENV:PROJECTNAME}/ !^([^,]+),.*\1
 RewriteRule .* - [E=REWRITEBASE:/%{ENV:PROJECTNAME}/]
 
 # Staging-Develop Installation directory
 RewriteCond %{ENV:ENVIRONMENT} synsites-develop
-RewriteCond %{REQUEST_URI},/%{ENV:PROJECTNAME}-develop/ !^([^,]+),.*\1
 RewriteRule .* - [E=REWRITEBASE:/%{ENV:PROJECTNAME}-develop/]
 
 # Force to always use https for production and staging environments
-# RewriteCond %{ENV:ENVIRONMENT} production [OR]
-# RewriteCond %{ENV:ENVIRONMENT} synsites-staging [OR]
-# RewriteCond %{ENV:ENVIRONMENT} synsites-develop
-# RewriteCond %{ENV:PROTOCOL} !s
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{ENV:REWRITEBASE}$1 [R=301,L]
+RewriteCond %{ENV:ENVIRONMENT} production [OR]
+RewriteCond %{ENV:ENVIRONMENT} synsites-staging [OR]
+RewriteCond %{ENV:ENVIRONMENT} synsites-develop
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{ENV:REWRITEBASE}$1 [R=301,L]
 
 # Protect hidden files from being viewed
 <Files .*>
-        Order Deny,Allow
-        Deny From All
+	Order Deny,Allow
+	Deny From All
 </Files>
 
 # Protect application and system files from being viewed
