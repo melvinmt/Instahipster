@@ -8,6 +8,14 @@ abstract class View_Website extends Kostache {
 		'footer' => 'footers/default',
 	);
 
+	public function i18n()
+	{
+		return function($string)
+		{
+			return __($string);
+		};
+	}
+
 	public function title()
 	{
 		$class = get_class($this);
