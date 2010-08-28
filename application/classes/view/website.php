@@ -34,14 +34,40 @@ abstract class View_Website extends Kostache {
 		return View::factory('profiler/stats');
 	}
 
-	public function assets()
+	public function assets_header()
 	{
-		$assets = array();
-		foreach (Assets::get() as $asset)
+		$assets = '';
+		foreach (Assets::get('header') as $asset)
 		{
-			$assets[] = array('asset' => $asset);
+			$assets .= $asset."\n";
 		}
 
 		return $assets;
+	}
+
+	public function assets_body()
+	{
+		$assets = '';
+		foreach (Assets::get('body') as $asset)
+		{
+			$assets .= $asset;
+		}
+
+		return $assets;
+	}
+
+	public function render($template = null, $view = null, $partials = null)
+	{
+		$content = parent::render($template, $view, $partials);
+
+		return str_replace(array
+		(
+			'[[assets_header]]',
+			'[[assets_body]]'
+		), array
+		(
+			$this->assets_header(),
+			$this->assets_body()
+		), $content);
 	}
 }
