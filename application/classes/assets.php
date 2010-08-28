@@ -24,7 +24,7 @@ class Assets
 		}
 	}
 
-	public static function get()
+	public static function get($section = NULL)
 	{
 		$assets = array();
 
