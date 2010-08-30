@@ -44,4 +44,17 @@ abstract class View_Website extends Kostache {
 
 		return $assets;
 	}
+
+	public function render($template = NULL, $view = NULL, $partials = NULL)
+	{
+		$content = parent::render($template, $view, $partials);
+
+		if (strpos($content, '[[assets]]') !== FALSE)
+		{
+			// Add assets to this template
+			$content = str_replace('[[assets]]', $this->render('{{#assets}}{{{asset}}}{{/assets}}'), $content);
+		}
+
+		return $content;
+	}
 }
