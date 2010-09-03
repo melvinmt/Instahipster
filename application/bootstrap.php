@@ -78,11 +78,6 @@ unset($apache_environment);
 Kohana::init(Kohana_Config::instance()->load('init')->as_array());
 
 /**
- * Attach the JSON Config Driver
- */
-Kohana::$config->attach(new Config_JSON('config.json'));
-
-/**
  * Attach the file write to logging. Multiple writers are supported.
  */
 Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
@@ -91,6 +86,11 @@ Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(Kohana::config('modules')->as_array());
+
+/**
+ * Attach the JSON Config Driver
+ */
+Kohana::$config->attach(new Config_JSON('config.json'));
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
