@@ -39,9 +39,17 @@ RewriteRule .* - [E=REWRITEBASE:/%{ENV:PROJECTNAME}/]
 RewriteCond %{ENV:ENVIRONMENT} synsites-develop
 RewriteRule .* - [E=REWRITEBASE:/%{ENV:PROJECTNAME}-develop/]
 
-# Force to always use https for production and staging environments
-RewriteCond %{ENV:ENVIRONMENT} production [OR]
-RewriteCond %{ENV:ENVIRONMENT} synsites-staging [OR]
+# Force to always use https for production environment
+RewriteCond %{ENV:ENVIRONMENT} production
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{ENV:REWRITEBASE}$1 [R=301,L]
+
+# Force to always use https for staging environment
+RewriteCond %{ENV:ENVIRONMENT} synsites-staging
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{ENV:REWRITEBASE}$1 [R=301,L]
+
+# Force to always use https for staging-develop environment
 RewriteCond %{ENV:ENVIRONMENT} synsites-develop
 RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{ENV:REWRITEBASE}$1 [R=301,L]
