@@ -2,8 +2,8 @@
 
 *A quick way to start new projects with basic configuration*
 
-- **Module Version:** 0.5.0
-- **Module URL:** <http://github.com/synapsestudios/kohana-projecttemplate>
+- **Version:** 0.5.0
+- **URL:** <http://github.com/synapsestudios/kohana-projecttemplate>
 - **Compatible Kohana Version(s):** 3.0.x
 
 ## Description
