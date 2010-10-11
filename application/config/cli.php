@@ -2,6 +2,7 @@
 
 return array
 (
-	'http_host' => 'domain.com',
+	//@TODO change this to be project-specific
+	'http_host' => 'example.com',
 	'protocol'  => 'http',
 );
