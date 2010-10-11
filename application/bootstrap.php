@@ -63,6 +63,13 @@ Kohana_Config::instance()->attach(new Kohana_Config_File('config/environments/ap
 unset($apache_environment);
 
 /**
+ * Set the session save path.
+ * @see  http://php.net/session-save-path
+ * @todo change this to be project-specific
+ */
+session_save_path(Kohana_Config::instance()->load('session')->save_path);
+
+/**
  * Initialize Kohana, setting the default options.
  *
  * The following options are available:
