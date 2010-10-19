@@ -10,6 +10,12 @@ abstract class View_Website extends View_Layout {
 		};
 	}
 
+	public function _initialize()
+	{
+		Assets::add_group('default-template');
+		parent::_initialize();
+	}
+
 	public function title()
 	{
 		$class = get_class($this);
