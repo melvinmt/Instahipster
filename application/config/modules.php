@@ -20,4 +20,5 @@ return array(
 	'unittest'           => MODPATH.'unittest',
 	'userguide'          => MODPATH.'userguide',
 	'yform'              => MODPATH.'yform',
+	'config.json'        => MODPATH.'config.json',
 );

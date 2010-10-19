@@ -34,10 +34,10 @@ abstract class View_Website extends View_Layout {
 		return View::factory('profiler/stats');
 	}
 
-	public function assets_header()
+	public function assets_head()
 	{
 		$assets = '';
-		foreach (Assets::get('header') as $asset)
+		foreach (Assets::get('head') as $asset)
 		{
 			$assets .= $asset."\n";
 		}
@@ -62,11 +62,11 @@ abstract class View_Website extends View_Layout {
 
 		return str_replace(array
 		(
-			'[[assets_header]]',
+			'[[assets_head]]',
 			'[[assets_body]]'
 		), array
 		(
-			$this->assets_header(),
+			$this->assets_head(),
 			$this->assets_body()
 		), $content);
 	}

@@ -88,6 +88,11 @@ Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
 Kohana::modules(Kohana::config('modules')->as_array());
 
 /**
+ * Attach the JSON Config Driver
+ */
+Kohana::$config->attach(new Config_JSON('config.json'));
+
+/**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
