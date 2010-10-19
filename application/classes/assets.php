@@ -35,7 +35,10 @@ class Assets
 				// Reverse the array to make it act a little more logically
 				foreach (array_reverse($group) as $asset)
 				{
-					$assets[] = $asset;
+					if ($asset[2] === $section)
+					{
+						$assets[] = $asset;
+					}
 				}
 			}
 			else
@@ -51,7 +54,14 @@ class Assets
 		$array = array();
 		foreach ($assets as $asset)
 		{
-			$array[] = $asset[0];
+			if ($asset[0] == 'script')
+			{
+				$array[] = HTML::script($asset[1]);
+			}
+			elseif ($asset[0] == 'style')
+			{
+				$array[] = HTML::style($asset[1]);
+			}
 		}
 
 		return $array;
@@ -69,6 +79,6 @@ class Assets
 			return 0;
 		}
 
-		return ($a[1] > $b[1]) ? +1 : -1;
+		return ($a[1] - $b[1]);
 	}
 }
