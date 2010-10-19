@@ -11,13 +11,10 @@ class Kostache extends Kohana_Kostache
 			include_once $file;
 		}
 
-		if ( ! $template AND Kohana::find_file('templates', $path, 'mustache'))
-		{
-			// This will ensure that Kostache does not rename the path of the template
-			$template = $path;
-		}
+		$instance = parent::factory($path, $template, $view, $partials);
+		$instance->_template_path = $path;
 
-		return parent::factory($path, $template, $view, $partials);
+		return $instance;
 	}
 
 	public function __construct($template = null, $view = null, $partials = null)
