@@ -1,12 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-abstract class View_Website extends Kostache {
-
-	protected $_partials = array
-	(
-		'header' => 'headers/default',
-		'footer' => 'footers/default',
-	);
+abstract class View_Website extends View_Layout {
 
 	public function i18n()
 	{
