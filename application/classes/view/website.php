@@ -2,6 +2,8 @@
 
 abstract class View_Website extends View_Layout {
 
+	public $title = 'Default Page Title';
+
 	public function i18n()
 	{
 		return function($string)
@@ -18,10 +20,7 @@ abstract class View_Website extends View_Layout {
 
 	public function title()
 	{
-		$class = get_class($this);
-		$title = str_replace('_', ' ', substr($class, 5));
-
-		return $this->title = __($title);
+		return __($this->title);
 	}
 
 	public function notices()
