@@ -28,7 +28,7 @@ abstract class Controller_Website extends Controller {
 			{
 				$this->view = Kostache::factory($controller_path);
 			}
-			catch (Exception $x)
+			catch (Kohana_View_Exception $x)
 			{
 				/*
 				 * The View class could not be found, so the controller action is
