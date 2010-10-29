@@ -2,5 +2,5 @@
 
 class Kohana extends Kohana_Core
 {
-	const APP_VERSION = Kohana::DEVELOPMENT;
+	const APP_VERSION = '0.0.0';
 }
