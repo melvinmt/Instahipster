@@ -16,7 +16,7 @@ return array
 		),
 		'table_prefix' => '',
 		'charset'      => 'utf8',
-		'caching'      => FALSE,
-		'profiling'    => TRUE,
+		'caching'      => TRUE,
+		'profiling'    => FALSE,
 	),
 );
