@@ -1,8 +1,14 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-
-class View_Layout extends Kostache
+/**
+ * Contains methods useful to views that use layouts
+ *
+ * @package    Synapse
+ * @category   Kostache
+ * @author     Synapse Studios
+ */
+class View_Layout extends View_Base
 {
-	protected $_layout = 'layouts/default';
+	protected $_layout = 'layout/default';
 
 	/**
 	 * Renders the body template into the layout
