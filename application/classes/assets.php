@@ -32,8 +32,7 @@ class Assets
 		{
 			if (($group = Kohana::config('assets.'.$name)) !== NULL)
 			{
-				// Reverse the array to make it act a little more logically
-				foreach (array_reverse($group) as $asset)
+				foreach ($group as $asset)
 				{
 					if ($asset[2] === $section)
 					{
@@ -72,13 +71,13 @@ class Assets
 	 */
 	public static function sort_assets($a, $b)
 	{
-		( ! isset($a[1])) AND $a[1] = 0;
-		( ! isset($b[1])) AND $b[1] = 0;
+		( ! isset($a[3])) AND $a[3] = 0;
+		( ! isset($b[3])) AND $b[3] = 0;
 
-		if ($a[1] == $b[1]) {
+		if ($a[3] == $b[3]) {
 			return 0;
 		}
 
-		return ($a[1] - $b[1]);
+		return ($a[3] - $b[3]);
 	}
 }
