@@ -58,9 +58,6 @@
 [submodule "modules/kostache"]
 	path = modules/kostache
 	url = git://github.com/synapsestudios/kohana-kostache
-[submodule "httpdocs/media/packages/restyle"]
-	path = httpdocs/media/packages/restyle
-	url = git://github.com/synapsestudios/restyle.git
 [submodule "modules/config.json"]
 	path = modules/config.json
 	url = git://github.com/synapsestudios/kohana-config.json.git
