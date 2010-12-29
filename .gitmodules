@@ -19,15 +19,9 @@
 [submodule "modules/pagination"]
 	path = modules/pagination
 	url = git://github.com/synapsestudios/kohana-pagination
-[submodule "modules/codebench"]
-	path = modules/codebench
-	url = git://github.com/synapsestudios/kohana-codebench
 [submodule "modules/userguide"]
 	path = modules/userguide
 	url = git://github.com/synapsestudios/kohana-userguide
-[submodule "modules/jssettings"]
-	path = modules/jssettings
-	url = git://github.com/synapsestudios/kohana-jssettings.git
 [submodule "modules/errors"]
 	path = modules/errors
 	url = git://github.com/synapsestudios/kohana-errors
@@ -37,9 +31,6 @@
 [submodule "modules/email"]
 	path = modules/email
 	url = git://github.com/synapsestudios/kohana-email.git
-[submodule "modules/assets"]
-	path = modules/assets
-	url = git://github.com/synapsestudios/kohana-assets.git
 [submodule "modules/acl"]
 	path = modules/acl
 	url = git://github.com/synapsestudios/kohana-acl.git
@@ -49,15 +40,9 @@
 [submodule "modules/yform"]
 	path = modules/yform
 	url = git://github.com/synapsestudios/kohana-yform.git
-[submodule "modules/less"]
-	path = modules/less
-	url = git://github.com/synapsestudios/kohana-less.git
 [submodule "modules/doctrinemigrations"]
 	path = modules/doctrinemigrations
 	url = git://github.com/synapsestudios/kohana-doctrinemigrations
 [submodule "modules/kostache"]
 	path = modules/kostache
 	url = git://github.com/synapsestudios/kohana-kostache
-[submodule "modules/config.json"]
-	path = modules/config.json
-	url = git://github.com/synapsestudios/kohana-config.json.git
