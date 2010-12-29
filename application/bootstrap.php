@@ -3,9 +3,12 @@
 //-- Environment setup --------------------------------------------------------
 
 /**
- * Set the Kohana Environment
+ * Set Kohana::$environment if a 'KOHANA_ENV' environment variable has been supplied.
  */
-Kohana::$environment = Kohana::DEVELOPMENT;
+if (getenv('KOHANA_ENV') !== FALSE)
+{
+	Kohana::$environment = getenv('KOHANA_ENV');
+}
 
 /**
  * Set the default time zone.
