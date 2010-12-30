@@ -7,7 +7,7 @@ return array(
 	'database'           => MODPATH.'database',
 	'doctrinemigrations' => MODPATH.'doctrinemigrations',
 	'email'              => MODPATH.'email',
-	'errors'             => MODPATH.'errors',
+	//'errors'             => MODPATH.'errors',
 	'image'              => MODPATH.'image',
 	'kostache'           => MODPATH.'kostache',
 	'notices'            => MODPATH.'notices',
