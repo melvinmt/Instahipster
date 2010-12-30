@@ -12,4 +12,52 @@ This repository is intended to quickly set up a basic project with all the initi
 
 - ### system
     - **url** : `git://github.com/synapsestudios/kohana-core`
-    - **checkout** : `3.0.9`
+    - **version** : `3.0.9`
+- ### modules/acl
+	- **url** : 
+	- **version** : 
+- ### modules/auth
+	- **url** : 
+	- **version** : 
+- ### modules/csrf
+	- **url** : 
+	- **version** : 
+- ### modules/database
+	- **url** : 
+	- **version** : 
+- ### modules/doctrinemigrations
+	- **url** : 
+	- **version** : 
+- ### modules/email
+	- **url** : 
+	- **version** : 
+- ### modules/errors
+	- **url** : 
+	- **version** : 
+- ### modules/image
+	- **url** : 
+	- **version** : 
+- ### modules/kostache
+	- **url** : 
+	- **version** : 
+- ### modules/media
+	- **url** : 
+	- **version** : 
+- ### modules/notices
+	- **url** : 
+	- **version** : 
+- ### modules/orm
+	- **url** : 
+	- **version** : 
+- ### modules/pagination
+	- **url** : 
+	- **version** : 
+- ### modules/unittest
+	- **url** : 
+	- **version** : 
+- ### modules/userguide
+	- **url** : 
+	- **version** : 
+- ### modules/yform
+	- **url** : 
+	- **version** : 
