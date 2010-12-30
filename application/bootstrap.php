@@ -1,13 +1,19 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-//-- Environment setup --------------------------------------------------------
+// -- Environment setup --------------------------------------------------------
 
-/**
- * Set Kohana::$environment if a 'KOHANA_ENV' environment variable has been supplied.
- */
-if (getenv('KOHANA_ENV') !== FALSE)
+// Load the core Kohana class
+require SYSPATH.'classes/kohana/core'.EXT;
+
+if (is_file(APPPATH.'classes/kohana'.EXT))
 {
-	Kohana::$environment = getenv('KOHANA_ENV');
+	// Application extends the core
+	require APPPATH.'classes/kohana'.EXT;
+}
+else
+{
+	// Load empty core extension
+	require SYSPATH.'classes/kohana'.EXT;
 }
 
 /**
@@ -42,7 +48,21 @@ spl_autoload_register(array('Kohana', 'auto_load'));
  */
 ini_set('unserialize_callback_func', 'spl_autoload_call');
 
-//-- Configuration and initialization -----------------------------------------
+// -- Configuration and initialization -----------------------------------------
+
+/**
+ * Set the default language
+ */
+I18n::lang('en-us');
+
+/**
+ * Set Kohana::$environment if $_ENV['KOHANA_ENV'] has been supplied.
+ *
+ */
+if (isset($_ENV['KOHANA_ENV']))
+{
+	Kohana::$environment = $_ENV['KOHANA_ENV'];
+}
 
 /**
  * Attach a file reader to config. Multiple readers are supported.
@@ -105,21 +125,3 @@ Route::set('default', '(<controller>(/<action>(/<id>)))')
 		'controller' => 'main',
 		'action'     => 'index',
 	));
-
-if ( ! defined('SUPPRESS_REQUEST'))
-{
-	$request = Request::instance();
-
-	if (Kohana::$is_cli)
-	{
-		Hook_CLI::init();
-	}
-
-	/**
-	 * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
-	 * If no source is specified, the URI will be automatically detected.
-	 */
-	echo $request->execute()
-		->send_headers()
-		->response;
-}
