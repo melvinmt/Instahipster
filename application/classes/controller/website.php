@@ -17,9 +17,9 @@ abstract class Controller_Website extends Controller {
 		if ($this->auto_render === TRUE)
 		{
 			// Set default title and content views (path only)
-			$directory = $this->request->directory;
-			$controller = $this->request->controller;
-			$action = $this->request->action;
+			$directory = $this->request->directory();
+			$controller = $this->request->controller();
+			$action = $this->request->action();
 
 			// Removes leading slash if this is not a subdirectory controller
 			$controller_path = trim($directory.'/'.$controller.'/'.$action, '/');
@@ -53,7 +53,7 @@ abstract class Controller_Website extends Controller {
 			if ($this->view === NULL)
 				throw new Kohana_View_Exception('There was no View created for this request.');
 
-			$this->request->response = $this->view;
+			$this->response->body($this->view);
 		}
 	}
 
