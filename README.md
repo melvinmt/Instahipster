@@ -12,7 +12,7 @@ This repository is intended to quickly set up a basic project with all the initi
 
 - ### system
     - **url** : `git://github.com/synapsestudios/kohana-core`
-    - **version** : `3.0.9`
+    - **version** : `3.0.x`
 - ### modules/acl
 	- **url** : 
 	- **version** : 
