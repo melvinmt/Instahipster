@@ -3,7 +3,7 @@
 return array
 (
 	// Use the cache directory on development because sessions are not important
-	'save_path' => realpath(APPPATH.'cache'),
+	'save_path' => APPPATH.'cache',
 	'native' => array
 	(
 		//@TODO change this to be project-specific
