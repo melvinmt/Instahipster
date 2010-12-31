@@ -5,3 +5,5 @@ nbproject
 Thumbs.db
 *.bak
 *.sass-cache
+application/cache/*
+application/logs/*
