@@ -15,7 +15,7 @@ class View_Layout extends View_Base
 	 */
 	public function render($template = null, $view = null, $partials = null)
 	{
-		$this->_partials += array
+		$this->_partial_paths += array
 		(
 			'body' => $this->_template_path
 		);
