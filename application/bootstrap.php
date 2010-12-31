@@ -89,7 +89,14 @@ unset($apache_environment);
  * Set the session save path.
  * @see  http://php.net/session-save-path
  */
-session_save_path(Kohana_Config::instance()->load('session')->save_path);
+$path = Kohana_Config::instance()->load('session')->save_path;
+$real = realpath($path);
+if ( ! is_dir($real) || ! is_writable($real))
+	throw new Kohana_Exception('Invalid session save path specified: :path',
+		array(':path' => $path));
+
+session_save_path($path);
+unset($path, $real);
 
 /**
  * Initialize Kohana, setting the default options.
