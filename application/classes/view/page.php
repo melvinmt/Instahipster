@@ -25,7 +25,20 @@ abstract class View_Page extends View_Layout {
 
 	public function notices()
 	{
-		return Notices::display();
+		$data = array();
+
+		foreach (Notices::get() as $array)
+		{
+			$message_path = $array['type'].'.'.$array['key'];
+			$data[] = array
+			(
+				'type'     => $array['type'],
+				'key'      => $array['key'],
+				'message'  => Kohana::message('notices', $message_path, $message_path),
+			);
+		}
+
+		return $data;
 	}
 
 	public function profiler()
