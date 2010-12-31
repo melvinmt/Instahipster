@@ -7,3 +7,4 @@ Thumbs.db
 *.sass-cache
 application/cache/*
 application/logs/*
+*.komodoproject
