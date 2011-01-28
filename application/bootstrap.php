@@ -65,6 +65,10 @@ if (($env = getenv('KOHANA_ENV')) !== FALSE)
 {
 	Kohana::$environment = constant('Kohana::'.strtoupper($env));
 }
+else
+{
+	$env = 'development';
+}
 
 /**
  * Attach a file reader to config. Multiple readers are supported.
