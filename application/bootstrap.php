@@ -56,12 +56,14 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
 I18n::lang('en-us');
 
 /**
- * Set Kohana::$environment if $_ENV['KOHANA_ENV'] has been supplied.
+ * Set Kohana::$environment if a 'KOHANA_ENV' environment variable has been supplied.
  *
+ * Note: If you supply an invalid environment name, a PHP warning will be thrown
+ * saying "Couldn't find constant Kohana::<INVALID_ENV_NAME>"
  */
-if (isset($_ENV['KOHANA_ENV']))
+if (($env = getenv('KOHANA_ENV')) !== FALSE)
 {
-	Kohana::$environment = $_ENV['KOHANA_ENV'];
+	Kohana::$environment = constant('Kohana::'.strtoupper($env));
 }
 
 /**
@@ -74,16 +76,8 @@ Kohana_Config::instance()->attach(new Kohana_Config_File);
  */
 if (Kohana::$environment != Kohana::PRODUCTION)
 {
-	Kohana_Config::instance()->attach(new Kohana_Config_File('config/environments/'.Kohana::$environment));
+	Kohana_Config::instance()->attach(new Kohana_Config_File('config/environments/'.$env));
 }
-
-$apache_environment = strtolower(URL::title(@getenv('ENVIRONMENT')));
-
-if (empty($apache_environment))
-	die('You need to specify a valid ENVIRONMENT in your vhost definition');
-
-Kohana_Config::instance()->attach(new Kohana_Config_File('config/environments/apache/'.$apache_environment));
-unset($apache_environment);
 
 /**
  * Set the session save path.
@@ -96,7 +90,8 @@ if ( ! is_dir($real) || ! is_writable($real))
 		array(':path' => $path));
 
 session_save_path($path);
-unset($path, $real);
+
+unset($env, $path, $real);
 
 /**
  * Initialize Kohana, setting the default options.
