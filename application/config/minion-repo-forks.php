@@ -55,4 +55,10 @@ return array(
 		'push_to'    => 'git@github.com:synapsestudios/minion-tasks-repo.git',
 		'checkout'   => 'origin/3.1/develop',
 	),
+	'system' => array(
+		'path'       => SYSPATH,
+		'fetch_from' => 'https://github.com/kohana/core.git',
+		'push_to'    => 'git@github.com:synapsestudios/kohana-core.git',
+		'checkout'   => 'origin/3.1/release/3.1.0',
+	),
 );
