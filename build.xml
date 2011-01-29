@@ -111,7 +111,7 @@
 	<target name="ci" depends="clean">
 		<phingcall target="test-log"/>
 		<phingcall target="pdepend-log"/>
-		<phingcall target="phpmd-log"/>
+<!--		<phingcall target="phpmd-log"/> -->
 		<phingcall target="phpcpd-log"/>
 		<phingcall target="phpcs-log"/>
 		<phingcall target="phpcb-log"/>
