@@ -17,4 +17,7 @@ return array(
 	'userguide'          => MODPATH.'userguide',
 	'yform'              => MODPATH.'yform',
 	'media'              => MODPATH.'media',
+	'git'                => MODPATH.'git',
+	'minion'             => MODPATH.'minion',
+	'minion-repo-tasks'  => MODPATH.'minion-tasks-repo',
 );
