@@ -49,3 +49,6 @@
 [submodule "modules/media"]
 	path = modules/media
 	url = git://github.com/synapsestudios/kohana-media.git
+[submodule "modules/minion"]
+	path = modules/minion
+	url = git://github.com/synapsestudios/kohana-minion.git
