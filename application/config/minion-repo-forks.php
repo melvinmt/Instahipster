@@ -61,4 +61,10 @@ return array(
 		'push_to'    => 'git@github.com:synapsestudios/kohana-core.git',
 		'checkout'   => 'origin/3.1/release/3.1.0',
 	),
+	'modules/pagination' => array(
+		'path'       => MODPATH.'pagination',
+		'fetch_from' => 'https://github.com/kohana/pagination.git',
+		'push_to'    => 'git@github.com:synapsestudios/kohana-pagination.git',
+		'checkout'   => 'origin/3.1/develop',
+	),
 );
