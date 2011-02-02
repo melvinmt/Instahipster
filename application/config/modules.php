@@ -12,7 +12,6 @@ return array(
 	'notices'            => MODPATH.'notices',
 	'orm'                => MODPATH.'orm',
 	'pagination'         => MODPATH.'pagination',
-	'unittest'           => MODPATH.'unittest',
 	'userguide'          => MODPATH.'userguide',
 	'yform'              => MODPATH.'yform',
 	'media'              => MODPATH.'media',
