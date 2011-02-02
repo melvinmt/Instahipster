@@ -5,7 +5,6 @@ return array(
 	'auth'               => MODPATH.'auth',
 	'csrf'               => MODPATH.'csrf',
 	'database'           => MODPATH.'database',
-	'doctrinemigrations' => MODPATH.'doctrinemigrations',
 	'email'              => MODPATH.'email',
 	'errors'             => MODPATH.'errors',
 	'image'              => MODPATH.'image',

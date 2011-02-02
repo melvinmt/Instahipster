@@ -40,9 +40,6 @@
 [submodule "modules/yform"]
 	path = modules/yform
 	url = git://github.com/synapsestudios/kohana-yform.git
-[submodule "modules/doctrinemigrations"]
-	path = modules/doctrinemigrations
-	url = git://github.com/synapsestudios/kohana-doctrinemigrations
 [submodule "modules/kostache"]
 	path = modules/kostache
 	url = git://github.com/synapsestudios/kohana-kostache
