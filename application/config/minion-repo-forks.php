@@ -67,4 +67,10 @@ return array(
 		'push_to'    => 'git@github.com:synapsestudios/kohana-pagination.git',
 		'checkout'   => 'origin/3.1/develop',
 	),
+	'modules/notices' => array(
+		'path'       => MODPATH.'notices',
+		'fetch_from' => 'https://github.com/synapsestudios/kohana-notices.git',
+		'push_to'    => 'git@github.com:synapsestudios/kohana-notices.git',
+		'checkout'   => 'origin/dev/3.0.x',
+	),
 );
