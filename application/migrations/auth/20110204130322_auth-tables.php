@@ -23,7 +23,7 @@ class Migration_Auth_20110204130322 extends Minion_Migration_Base {
 		');
 
 		$db->query(NULL, '
-			CREATE TABLE IF NOT EXISTS `roles_users` (
+			CREATE TABLE IF NOT EXISTS `pvt_roles_users` (
 			`user_id` INT UNSIGNED NOT NULL,
 			`role_id` INT UNSIGNED NOT NULL,
 			PRIMARY KEY  (`user_id`,`role_id`),
@@ -69,7 +69,7 @@ class Migration_Auth_20110204130322 extends Minion_Migration_Base {
 	 */
 	public function down(Kohana_Database $db)
 	{
-		$db->query(NULL, 'DROP TABLE roles_users');
+		$db->query(NULL, 'DROP TABLE pvt_roles_users');
 		$db->query(NULL, 'DROP TABLE roles');
 		$db->query(NULL, 'DROP TABLE users');
 		$db->query(NULL, 'DROP TABLE user_tokens');

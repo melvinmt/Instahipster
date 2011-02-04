@@ -13,12 +13,12 @@ class Migration_Auth_20110204130515 extends Minion_Migration_Base {
 	public function up(Kohana_Database $db)
 	{
 		$db->query(NULL, '
-			ALTER TABLE `roles_users`
-			ADD CONSTRAINT `fk_roles_users_user_id`
+			ALTER TABLE `pvt_roles_users`
+			ADD CONSTRAINT `fk_pvt_roles_users_user_id`
 				FOREIGN KEY (`user_id`)
 				REFERENCES `users` (`id`)
 				ON DELETE CASCADE,
-			ADD CONSTRAINT `fk_roles_users_role_id`
+			ADD CONSTRAINT `fk_pvt_roles_users_role_id`
 				FOREIGN KEY (`role_id`)
 				REFERENCES `roles` (`id`)
 				ON DELETE CASCADE;
@@ -41,9 +41,9 @@ class Migration_Auth_20110204130515 extends Minion_Migration_Base {
 	public function down(Kohana_Database $db)
 	{
 		$db->query(NULL, '
-			ALTER TABLE `roles_users`
-			DROP FOREIGN KEY `fk_roles_users_user_id`,
-			DROP FOREIGN KEY `fk_roles_users_role_id`;
+			ALTER TABLE `pvt_roles_users`
+			DROP FOREIGN KEY `fk_pvt_roles_users_user_id`,
+			DROP FOREIGN KEY `fk_pvt_roles_users_role_id`;
 		');
 
 		$db->query(NULL, '
