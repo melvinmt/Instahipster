@@ -55,3 +55,6 @@
 [submodule "modules/git"]
 	path = modules/git
 	url = git://github.com/synapsestudios/kohana-git.git
+[submodule "modules/minion-tasks-migrations"]
+	path = modules/minion-tasks-migrations
+	url = git://github.com/synapsestudios/minion-tasks-migrations.git
