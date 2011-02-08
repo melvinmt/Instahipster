@@ -55,6 +55,12 @@ return array(
 		'push_to'    => 'git@github.com:synapsestudios/minion-tasks-repo.git',
 		'checkout'   => 'origin/3.1/develop',
 	),
+	'modules/minion-tasks-migrations' => array(
+		'path'       => MODPATH.'minion-tasks-repo',
+		'fetch_from' => 'https://github.com/kohana-minion/tasks-migrations.git',
+		'push_to'    => 'git@github.com:synapsestudios/minion-tasks-migrations.git',
+		'checkout'   => 'origin/develop',
+	),
 	'system' => array(
 		'path'       => SYSPATH,
 		'fetch_from' => 'https://github.com/kohana/core.git',
