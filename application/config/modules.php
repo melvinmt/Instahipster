@@ -17,5 +17,6 @@ return array(
 	'media'              => MODPATH.'media',
 	'git'                => MODPATH.'git',
 	'minion'             => MODPATH.'minion',
-	'minion-repo-tasks'  => MODPATH.'minion-tasks-repo',
+	'minion-migrations'  => MODPATH.'minion-tasks-migrations',
+	'minion-repo'        => MODPATH.'minion-tasks-repo',
 );
