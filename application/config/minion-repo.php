@@ -85,4 +85,10 @@ return array(
 		'push_to'    => 'git@github.com:synapsestudios/kohana-acl.git',
 		'checkout'   => 'origin/dev/1.0.x',
 	),
+	'modules/yform' => array(
+		'path'       => MODPATH.'yform',
+		'fetch_from' => 'https://github.com/Zeelot/kohana-yform.git',
+		'push_to'    => 'git@github.com:synapsestudios/kohana-yform.git',
+		'checkout'   => 'origin/dev/1.1.x',
+	),
 );
