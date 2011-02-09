@@ -4,7 +4,9 @@ class CLI extends Kohana_CLI {
 
 	public static function input($message, $default = NULL)
 	{
-		$message = (is_string($default)) ? $message.' ['.$default.']: ' : $message.': ';
+		$message = (is_string($default))
+			? ($message.' ['.$default.']: ')
+			: ($message.': ');
 		self::output($message, FALSE);
 		$value = trim(fgets(STDIN));
 
