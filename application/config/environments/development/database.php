@@ -1,12 +1,9 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
-return array
-(
-	'default' => array
-	(
+return array(
+	'default' => array(
 		'type'       => 'mysql',
-		'connection' => array
-		(
+		'connection' => array(
 			// @TODO: change this to be project-specific
 			'hostname'   => 'localhost',
 			'username'   => 'root',
