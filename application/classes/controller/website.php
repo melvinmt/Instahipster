@@ -82,6 +82,6 @@ abstract class Controller_Website extends Controller {
 			return FALSE;
 		}
 
-		return $has_csrf and $valid_csrf;
+		return $has_csrf AND $valid_csrf;
 	}
 }
