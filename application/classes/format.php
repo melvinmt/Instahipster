@@ -72,7 +72,7 @@ class Format {
 	 * @param   bool   $allow_empty whether to allow an empty $date to specify 'now'
 	 * @return  mixed
 	 */
-	public static function date($date, $format = 'mysql.DATETIME', $default = NULL, $allow_empty = TRUE)
+	public static function date($date = NULL, $format = 'mysql.DATETIME', $default = NULL, $allow_empty = TRUE)
 	{
 		if ( ! $allow_empty AND ! Validate::not_empty($date))
 			return $default;
