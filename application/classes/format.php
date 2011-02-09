@@ -81,7 +81,7 @@ class Format {
 
 		return ($object instanceof DateTime)
 			? $object->format(Kohana::config('dates.'.$format))
-			: $default);
+			: $default;
 	}
 
 	public static function empty_to_null($value)
