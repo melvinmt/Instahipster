@@ -58,3 +58,6 @@
 [submodule "modules/minion-tasks-migrations"]
 	path = modules/minion-tasks-migrations
 	url = git://github.com/synapsestudios/minion-tasks-migrations.git
+[submodule "modules/admin-theme"]
+	path = modules/admin-theme
+	url = git://github.com/synapsestudios/kohana-admin-theme.git
