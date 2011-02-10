@@ -2,6 +2,7 @@
 
 return array(
 	'acl'                => MODPATH.'acl',
+	'admin-theme'        => MODPATH.'admin-theme',
 	'auth'               => MODPATH.'auth',
 	'csrf'               => MODPATH.'csrf',
 	'database'           => MODPATH.'database',
