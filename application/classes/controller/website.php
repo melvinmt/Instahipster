@@ -76,12 +76,12 @@ abstract class Controller_Website extends Controller {
 			? CSRF::valid($_POST['csrf-token'])
 			: FALSE;
 
-		if ($has_csrf && ! $valid_csrf)
+		if ($has_csrf AND ! $valid_csrf)
 		{
 			Notices::add('error', __('This form has expired. Please try submitting it again.'));
 			return FALSE;
 		}
 
-		return $has_csrf && $valid_csrf;
+		return $has_csrf AND $valid_csrf;
 	}
 }

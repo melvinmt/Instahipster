@@ -63,7 +63,16 @@ I18n::lang('en-us');
  */
 if (($env = getenv('KOHANA_ENV')) !== FALSE)
 {
+	/**
+	 * We have to ignore this line in the coding standards because it expects
+	 * constants to always be uppercase.
+	 *
+	 * The error that is returned from PHPCS is:
+	 * Constants must be uppercase; expected 'KOHANA::' but found 'Kohana::'
+	 */
+	// @codingStandardsIgnoreStart
 	Kohana::$environment = constant('Kohana::'.strtoupper($env));
+	// @codingStandardsIgnoreEnd
 }
 else
 {
@@ -89,7 +98,7 @@ if (Kohana::$environment != Kohana::PRODUCTION)
  */
 $path = Kohana_Config::instance()->load('session')->save_path;
 $real = realpath($path);
-if ( ! is_dir($real) || ! is_writable($real))
+if ( ! is_dir($real) OR ! is_writable($real))
 	throw new Kohana_Exception('Invalid session save path specified: :path',
 		array(':path' => $path));
 

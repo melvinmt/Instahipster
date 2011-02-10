@@ -1,10 +1,7 @@
-<project name="projecttemplate" default="help" basedir=".">
-	<property name="basedir" value="${project.basedir}"/>
-	<property name="builddir" value="${basedir}/build"/>
+<?xml version="1.0" encoding="UTF-8"?>
 
-	<property name="repo" value="git@github.com:synapsestudios/kohana-projecttemplate.git"/>
-	<property name="branch" value="dev/0.7.x"/>
-	<property name="tag" value="${env.TAG}"/>
+<project name="projecttemplate" default="help">
+	<property name="builddir" value="${project.basedir}/build"/>
 
 	<!-- Shows the help message -->
 	<target name="help">
@@ -48,7 +45,7 @@
 	<!-- Run PHP Code Sniffer -->
 	<target name="phpcs">
 		<phpcodesniffer standard="Kohana" showSniffs="true" showWarnings="true">
-			<fileset dir="${basedir}">
+			<fileset dir="${project.basedir}">
 				<include name="**/*.php" />
 				<exclude name="**/vendor/**" />
 			</fileset>
@@ -59,7 +56,7 @@
 	<!-- Run PHP Code Sniffer and generate checkstyle.xml -->
 	<target name="phpcs-log">
 		<phpcodesniffer standard="Kohana" showSniffs="true" showWarnings="true">
-			<fileset dir="${basedir}">
+			<fileset dir="${project.basedir}">
 				<include name="**/*.php" />
 				<exclude name="**/vendor/**" />
 			</fileset>
@@ -70,18 +67,18 @@
 
 	<!-- Run PHP Mess Detector -->
 	<target name="phpmd">
-		<exec command="phpmd ${basedir} text codesize,unusedcode --exclude=**/vendor/**"  passthru="true"/>
+		<exec command="phpmd ${project.basedir} text codesize,unusedcode --exclude=**/vendor/**"  passthru="true"/>
 	</target>
 
 	<!-- Run PHP Mess Detector and generate pmd.xml -->
 	<target name="phpmd-log">
-		<exec command="phpmd ${basedir} xml codesize,unusedcode --exclude=**/vendor/** --reportfile ${builddir}/logs/pmd.xml"  passthru="true"/>
+		<exec command="phpmd ${project.basedir} xml codesize,unusedcode --exclude=**/vendor/** --reportfile ${builddir}/logs/pmd.xml"  passthru="true"/>
 	</target>
 
 	<!-- Run PHP Copy/Paste Detector and generate pmd.xml -->
 	<target name="phpcpd-log">
 		<phpcpd>
-			<fileset dir="${basedir}">
+			<fileset dir="${project.basedir}">
 				<include name="**/*.php" />
 				<exclude name="**/vendor/**" />
 			</fileset>
@@ -92,7 +89,7 @@
 	<!-- Run PHP Depend and generate jdepend.xml -->
 	<target name="pdepend-log">
 		<phpdepend>
-			<fileset dir="${basedir}">
+			<fileset dir="${project.basedir}">
 				<include name="**/*.php" />
 				<exclude name="**/vendor/**" />
 			</fileset>
@@ -103,7 +100,7 @@
 
 	<!-- Run PHP CodeBrowser and generate output -->
 	<target name="phpcb-log">
-		<exec command="phpcb --log ${builddir}/logs --source ${basedir} --output ${builddir}/code-browser"  passthru="true"/>
+		<exec command="phpcb --log ${builddir}/logs --source ${project.basedir} --output ${builddir}/code-browser"  passthru="true"/>
 	</target>
 
 
@@ -115,5 +112,10 @@
 		<phingcall target="phpcpd-log"/>
 		<phingcall target="phpcs-log"/>
 		<phingcall target="phpcb-log"/>
+	</target>
+
+	<!-- Webistrano Deploy of QA Stage -->
+	<target name="deploy-qa">
+		<exec command="ruby /usr/local/webistrano/script/deploy --description='Automatically deployed from successful build' ${phing.project.name} qa" passthru="true"/>
 	</target>
 </project>

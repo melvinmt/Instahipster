@@ -7,7 +7,7 @@ class Request extends Kohana_Request {
 	 */
 	public static function upload_too_large()
 	{
-		return (bool) (isset($_GET['uploading']) && empty($_POST) && empty($_FILES));
+		return (bool) (isset($_GET['uploading']) AND empty($_POST) AND empty($_FILES));
 	}
 
 } // End Request
