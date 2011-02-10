@@ -91,4 +91,16 @@ return array(
 		'push_to'    => 'git@github.com:synapsestudios/kohana-yform.git',
 		'checkout'   => 'origin/dev/1.1.x',
 	),
+	'modules/media' => array(
+		'path'       => MODPATH.'media',
+		'fetch_from' => 'https://github.com/Zeelot/kohana-media.git',
+		'push_to'    => 'git@github.com:synapsestudios/kohana-media.git',
+		'checkout'   => 'origin/dev/1.1.x',
+	),
+	'modules/admin-theme' => array(
+		'path'       => MODPATH.'admin-theme',
+		'fetch_from' => 'https://github.com/synapsestudios/kohana-admin-theme.git',
+		'push_to'    => 'git@github.com:synapsestudios/kohana-admin-theme.git',
+		'checkout'   => 'origin/dev/1.0.x',
+	),
 );
