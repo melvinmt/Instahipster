@@ -61,3 +61,6 @@
 [submodule "modules/admin-theme"]
 	path = modules/admin-theme
 	url = git://github.com/synapsestudios/kohana-admin-theme.git
+[submodule "modules/minion-tasks-upgrade"]
+	path = modules/minion-tasks-upgrade
+	url = git://github.com/synapsestudios/minion-tasks-upgrade.git
