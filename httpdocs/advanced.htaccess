@@ -8,76 +8,52 @@ RewriteRule .* - [E=PROJECTNAME:example.com]
 RewriteCond %{ENV:PROJECTNAME},%{HTTP_HOST} ^([^,]+),www\.\1
 RewriteRule ^(.*)$ http://%{ENV:PROJECTNAME}/$1 [R=301,L]
 
-# Force to always use the HTTPS domain without the 'www' prefix (ssl)
-# RewriteCond %{ENV:PROJECTNAME},%{HTTP_HOST} ^([^,]+),www\.\1
-# RewriteRule ^(.*)$ https://%{ENV:PROJECTNAME}/$1 [R=301,L]
-
-# Set dev.vm environment based on domain
+# Set Development environment based on domain
 RewriteCond %{HTTP_HOST} ^dev.vm$
 RewriteCond %{ENV:PROJECTNAME},%{REQUEST_URI} ^([^,]+),/\1
-RewriteRule .* - [E=ENVIRONMENT:dev-vm]
+RewriteRule .* - [E=KOHANA_ENV:development]
 
-# Set staging environment based on domain
+# Set QA environment based on domain
+RewriteCond %{HTTP_HOST} ^qa.synsit.es$
+RewriteCond %{ENV:PROJECTNAME},%{REQUEST_URI} ^([^,]+),/\1
+RewriteRule .* - [E=KOHANA_ENV:qa]
+
+# Set Staging environment based on domain
 RewriteCond %{HTTP_HOST} ^demo.synsit.es$
 RewriteCond %{ENV:PROJECTNAME},%{REQUEST_URI} ^([^,]+),/\1
-RewriteRule .* - [E=ENVIRONMENT:synsites-staging]
+RewriteRule .* - [E=KOHANA_ENV:staging]
 
-# Set staging-develop environment based on domain
-RewriteCond %{HTTP_HOST} ^demo.synsit.es$
-RewriteCond %{ENV:PROJECTNAME},%{REQUEST_URI} ^([^,]+),/\1-develop
-RewriteRule .* - [E=ENVIRONMENT:synsites-develop]
+# Set Beta environment based on domain
+RewriteCond %{ENV:PROJECTNAME},%{HTTP_HOST} ^([^,]+),beta\.\1
+RewriteRule .* - [E=KOHANA_ENV:beta]
 
-# Set production environment based on domain
+# Set Production environment based on domain
 RewriteCond %{ENV:PROJECTNAME},%{HTTP_HOST} ^([^,]+),\1
-RewriteRule .* - [E=ENVIRONMENT:production]
+RewriteRule .* - [E=KOHANA_ENV:production]
 
 # Installation directory
-RewriteCond %{ENV:ENVIRONMENT} !dev-vm
-RewriteCond %{ENV:ENVIRONMENT} !synsites-staging
-RewriteCond %{ENV:ENVIRONMENT} !synsites-develop
+RewriteCond %{ENV:KOHANA_ENV} !development
+RewriteCond %{ENV:KOHANA_ENV} !qa
+RewriteCond %{ENV:KOHANA_ENV} !staging
 RewriteRule .* - [E=REWRITEBASE:/]
 
-# dev.vm Installation directory
-RewriteCond %{ENV:ENVIRONMENT} dev-vm
+# Development Installation directory
+RewriteCond %{ENV:KOHANA_ENV} development
+RewriteRule .* - [E=REWRITEBASE:/%{ENV:PROJECTNAME}/]
+
+# QA Installation directory
+RewriteCond %{ENV:KOHANA_ENV} qa
 RewriteRule .* - [E=REWRITEBASE:/%{ENV:PROJECTNAME}/]
 
 # Staging Installation directory
-RewriteCond %{ENV:ENVIRONMENT} synsites-staging
+RewriteCond %{ENV:KOHANA_ENV} staging
 RewriteRule .* - [E=REWRITEBASE:/%{ENV:PROJECTNAME}/]
-
-# Staging-Develop Installation directory
-RewriteCond %{ENV:ENVIRONMENT} synsites-develop
-RewriteRule .* - [E=REWRITEBASE:/%{ENV:PROJECTNAME}-develop/]
-
-# Force to always use https for production environment
-# RewriteCond %{ENV:ENVIRONMENT} production
-# RewriteCond %{HTTPS} !=on
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{ENV:REWRITEBASE}$1 [R=301,L]
-
-# Force to always use https for dev.vm environment
-# RewriteCond %{ENV:ENVIRONMENT} dev-vm
-# RewriteCond %{HTTPS} !=on
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{ENV:REWRITEBASE}$1 [R=301,L]
-
-# Force to always use https for staging environment
-# RewriteCond %{ENV:ENVIRONMENT} synsites-staging
-# RewriteCond %{HTTPS} !=on
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{ENV:REWRITEBASE}$1 [R=301,L]
-
-# Force to always use https for staging-develop environment
-# RewriteCond %{ENV:ENVIRONMENT} synsites-develop
-# RewriteCond %{HTTPS} !=on
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{ENV:REWRITEBASE}$1 [R=301,L]
 
 # Protect hidden files from being viewed
 <Files .*>
 	Order Deny,Allow
 	Deny From All
 </Files>
-
-# Protect application and system files from being viewed
-# We do this by keeping these directories out of the web root so this rule is not needed
-# RewriteRule ^(?:application|modules|system)\b.* index.php/$0 - [F,L]
 
 # Allow any files or directories that exist to be displayed directly
 RewriteCond %{REQUEST_FILENAME} !-f
