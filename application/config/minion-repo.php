@@ -47,7 +47,7 @@ return array(
 		'path'       => MODPATH.'git',
 		'fetch_from' => 'https://github.com/Zeelot/kohana-git.git',
 		'push_to'    => 'git@github.com:synapsestudios/kohana-git.git',
-		'checkout'   => 'origin/3.1/develop',
+		'checkout'   => 'origin/dev/0.1.x',
 	),
 	'modules/minion-tasks-repo' => array(
 		'path'       => MODPATH.'minion-tasks-repo',
