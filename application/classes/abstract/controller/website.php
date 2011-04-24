@@ -53,7 +53,7 @@ abstract class Abstract_Controller_Website extends Controller {
 	 */
 	public function valid_post()
 	{
-		if (Request::upload_too_large())
+		if (Request::post_max_size_exceeded())
 		{
 			Notices::add('error', __('Max filesize of :max exceeded.', array(':max' => ini_get('post_max_size').'B')));
 			return FALSE;
