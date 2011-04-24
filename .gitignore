@@ -8,3 +8,4 @@ Thumbs.db
 application/cache/*
 application/logs/*
 *.komodoproject
+.idea
