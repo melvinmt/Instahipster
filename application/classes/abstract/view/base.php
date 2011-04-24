@@ -6,7 +6,7 @@
  * @category   Kostache
  * @author     Synapse Studios
  */
-abstract class View_Base extends Kostache
+abstract class Abstract_View_Base extends Kostache
 {
 	/**
 	 * Lambda function to alternate between a set of strings

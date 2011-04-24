@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-abstract class Controller_Website extends Controller {
+abstract class Abstract_Controller_Website extends Controller {
 
 	/**
 	 * @var  boolean  auto render view

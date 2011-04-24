@@ -6,7 +6,7 @@
  * @category   Kostache
  * @author     Synapse Studios
  */
-class View_Layout extends View_Base
+abstract class Abstract_View_Layout extends Abstract_View_Base
 {
 	protected $_layout = 'layout/default';
 

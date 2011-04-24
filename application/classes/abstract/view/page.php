@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-abstract class View_Page extends View_Layout {
+abstract class Abstract_View_Page extends Abstract_View_Layout {
 
 	public $title = 'Default Page Title';
 
