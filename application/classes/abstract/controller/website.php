@@ -53,7 +53,7 @@ abstract class Abstract_Controller_Website extends Controller {
 	 */
 	public function valid_post()
 	{
-		if ($this->request->method() === HTTP_Request::POST)
+		if ($this->request->method() !== HTTP_Request::POST)
 			return FALSE;
 
 		if (Request::post_max_size_exceeded())
