@@ -53,20 +53,22 @@ abstract class Abstract_Controller_Website extends Controller {
 	 */
 	public function valid_post()
 	{
+		if ($this->request->method() === HTTP_Request::POST)
+			return FALSE;
+
 		if (Request::post_max_size_exceeded())
 		{
 			Notices::add('error', __('Max filesize of :max exceeded.', array(':max' => ini_get('post_max_size').'B')));
 			return FALSE;
 		}
 
-		$has_csrf = isset($_POST['csrf-token']);
-
-		$valid_csrf = $has_csrf 
-			? CSRF::valid($_POST['csrf-token'])
-			: FALSE;
+		$csrf = $this->request->post('csrf-token');
+		$has_csrf = ! empty($csrf);
+		$valid_csrf = $has_csrf AND CSRF::valid($csrf);
 
 		if ($has_csrf AND ! $valid_csrf)
 		{
+			// CSRF was submitted but expired
 			Notices::add('error', __('This form has expired. Please try submitting it again.'));
 			return FALSE;
 		}
