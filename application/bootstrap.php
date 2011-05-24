@@ -79,6 +79,8 @@ else
 	$env = 'development';
 }
 
+Kohana::$environment_string = $env;
+
 /**
  * Attach a file reader to config. Multiple readers are supported.
  */
