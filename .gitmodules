@@ -64,3 +64,6 @@
 [submodule "modules/minion-tasks-upgrade"]
 	path = modules/minion-tasks-upgrade
 	url = git://github.com/synapsestudios/minion-tasks-upgrade.git
+[submodule "modules/assets"]
+	path = modules/assets
+	url = git://github.com/synapsestudios/kohana-assets.git
