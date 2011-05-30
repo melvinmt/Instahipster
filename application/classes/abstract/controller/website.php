@@ -19,7 +19,8 @@ abstract class Abstract_Controller_Website extends Controller {
 
 		try
 		{
-			$this->view = Kostache::factory('page/'.$controller_path);
+			$this->view = Kostache::factory('page/'.$controller_path)
+				->assets(new Assets);
 		}
 		catch (Kohana_View_Exception $x)
 		{
@@ -48,7 +49,7 @@ abstract class Abstract_Controller_Website extends Controller {
 
 	/**
 	 * Returns true if the post has a valid CSRF
-	 * 
+	 *
 	 * @return  bool
 	 */
 	public function valid_post()
