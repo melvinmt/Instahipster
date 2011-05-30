@@ -39,7 +39,7 @@ abstract class Abstract_View_Base extends Kostache
 		$class = get_class($this);
 
 		// Remove 'View_' prefix and lowercase
-		return strtolower(substr($class, 10));
+		return strtolower(substr($class, 5));
 	}
 
 	/**
