@@ -38,8 +38,9 @@ class Minion_Task_App_Watch extends Minion_Task {
 		$app_compiled_path = $compile_dir.'app.min.js';
 
 		file_put_contents($concat_path, $contents);
-		file_put_contents($components_path, exec('uglifyjs "'.$concat_path.'"'));
-		file_put_contents($app_compiled_path, exec('uglifyjs "'.$app_path.'"'));
+		// Not mangling variable names and not removing unused code
+		file_put_contents($components_path, exec('uglifyjs --no-mangle --no-dead-code "'.$concat_path.'"'));
+		file_put_contents($app_compiled_path, exec('uglifyjs --no-mangle --no-dead-code "'.$app_path.'"'));
 	}
 
 	protected function recursive_concat_contents(array $files, $ext)
