@@ -18,14 +18,6 @@ abstract class Abstract_View_Page extends Abstract_View_Layout {
 		};
 	}
 
-	public function site_name()
-	{
-		return array(
-			'title' => 'Project Template',
-			'url'   => URL::site(''),
-		);
-	}
-
 	public function title()
 	{
 		return __($this->title);
