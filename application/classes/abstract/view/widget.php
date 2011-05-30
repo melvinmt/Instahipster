@@ -6,4 +6,7 @@
  * @category   Kostache
  * @author     Synapse Studios
  */
-abstract class Abstract_View_Widget extends Abstract_View_Base {}
+abstract class Abstract_View_Widget extends Abstract_View_Layout {
+
+	protected $_layout = 'layout/widget';
+}
