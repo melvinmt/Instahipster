@@ -27,6 +27,22 @@ abstract class Abstract_View_Base extends Kostache
 	}
 
 	/**
+	 * Returns the lowercased class name without the view_ prefix
+	 * Useful for giving pages and widgets a class/id
+	 *
+	 *     `<body id="{{view_name}}">`
+	 *
+	 * @return string
+	 */
+	public function view_name()
+	{
+		$class = get_class($this);
+
+		// Remove 'View_' prefix and lowercase
+		return strtolower(substr($class, 10));
+	}
+
+	/**
 	 * Lambda function to alternate between a set of strings
 	 *
 	 * // This will alternate between 'one', 'two', 'three', and 'four'
