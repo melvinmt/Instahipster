@@ -7,5 +7,6 @@ return array
 		array('style', Media::url('css/compiled/styles.css'), 'head'),
 		array('script', 'http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js', 'body'),
 		array('script', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js', 'body', 10),
+		array('script', Media::url('js/underscore-min.js'), 'body'),
 	),
 );
