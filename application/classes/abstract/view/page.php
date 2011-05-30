@@ -4,6 +4,12 @@ abstract class Abstract_View_Page extends Abstract_View_Layout {
 
 	public $title = 'Default Page Title';
 
+	public function assets($assets)
+	{
+		$assets->group('default-template');
+		return parent::assets($assets);
+	}
+
 	public function i18n()
 	{
 		return function($string)
@@ -12,10 +18,12 @@ abstract class Abstract_View_Page extends Abstract_View_Layout {
 		};
 	}
 
-	public function _initialize()
+	public function site_name()
 	{
-		Assets::add_group('default-template');
-		parent::_initialize();
+		return array(
+			'title' => 'Project Template',
+			'url'   => URL::site(''),
+		);
 	}
 
 	public function title()
@@ -48,8 +56,11 @@ abstract class Abstract_View_Page extends Abstract_View_Layout {
 
 	public function assets_head()
 	{
+		if ( ! $this->_assets)
+			return '';
+
 		$assets = '';
-		foreach (Assets::get('head') as $asset)
+		foreach ($this->_assets->get('head') as $asset)
 		{
 			$assets .= $asset."\n";
 		}
@@ -59,8 +70,11 @@ abstract class Abstract_View_Page extends Abstract_View_Layout {
 
 	public function assets_body()
 	{
+		if ( ! $this->_assets)
+			return '';
+
 		$assets = '';
-		foreach (Assets::get('body') as $asset)
+		foreach ($this->_assets->get('body') as $asset)
 		{
 			$assets .= $asset;
 		}
