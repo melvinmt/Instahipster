@@ -9,8 +9,26 @@
 abstract class Abstract_View_Base extends Kostache
 {
 	/**
+	 * Assets object to add css/js groups to
+	 */
+	protected $_assets;
+
+	/**
+	 * Gets or sets the Assets object in the view
+	 *
+	 * @param  Object the Assets object
+	 * @return this
+	 */
+	public function assets($assets)
+	{
+		$this->_assets = $assets;
+
+		return $this;
+	}
+
+	/**
 	 * Lambda function to alternate between a set of strings
-	 * 
+	 *
 	 * // This will alternate between 'one', 'two', 'three', and 'four'
 	 * {{#alternate}}one|two|three|four{{/alternate}}
 	 *
