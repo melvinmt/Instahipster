@@ -17,6 +17,7 @@ return array(
 	'minion-migrations'  => MODPATH.'minion-tasks-migrations',
 	'minion-repo'        => MODPATH.'minion-tasks-repo',
 	'minion-upgrade'     => MODPATH.'minion-tasks-upgrade',
+	'minion-cron'        => MODPATH.'minion-tasks-cron',
 	'notices'            => MODPATH.'notices',
 	'orm'                => MODPATH.'orm',
 	'pagination'         => MODPATH.'pagination',
