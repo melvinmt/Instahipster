@@ -67,3 +67,6 @@
 [submodule "modules/assets"]
 	path = modules/assets
 	url = git://github.com/synapsestudios/kohana-assets.git
+[submodule "modules/minion-tasks-cron"]
+	path = modules/minion-tasks-cron
+	url = git://github.com/synapsestudios/minion-tasks-cron.git
