@@ -29,21 +29,19 @@ class Minion_Task_App_Watch extends Minion_Task {
 		$files = Kohana::list_files('media/js/app/components');
 		$contents .= $this->recursive_concat_contents($files, 'js');
 
+		// Append the app.js file so it runs last
+		$contents .= "\n".file_get_contents(APPPATH.'media/js/app/app.js');
+
 		$compile_dir = APPPATH.'media/js/app/compiled/';
 
 		// The components without minification (use in dev environments)
-		$concat_path = $compile_dir.'app.components.js';
+		$concat_path = $compile_dir.'app.js';
 		// Minified components for production
-		$components_path = $compile_dir.'app.components.min.js';
-		// For dev environment
-		$app_path = APPPATH.'media/js/app/app.js';
-		// Minified app for production
-		$app_compiled_path = $compile_dir.'app.min.js';
+		$components_path = $compile_dir.'app.min.js';
 
 		file_put_contents($concat_path, $contents);
 		// Not mangling variable names and not removing unused code
 		file_put_contents($components_path, exec('uglifyjs --no-mangle --no-dead-code "'.$concat_path.'"'));
-		file_put_contents($app_compiled_path, exec('uglifyjs --no-mangle --no-dead-code "'.$app_path.'"'));
 	}
 
 	protected function recursive_concat_contents(array $files, $ext)

@@ -9,7 +9,6 @@ return array
 		array('script', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js', 'body', 10),
 		array('script', Media::url('js/underscore-min.js'), 'body', 10),
 		array('script', Media::url('js/backbone-min.js'), 'body', 20),
-		array('script', Media::url('js/app/compiled/app.components.min.js'), 'body', 30),
 		array('script', Media::url('js/app/compiled/app.min.js'), 'body', 40),
 	),
 );
