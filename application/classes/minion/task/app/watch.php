@@ -22,9 +22,12 @@ class Minion_Task_App_Watch extends Minion_Task {
 
 	protected function compile()
 	{
-		// Concat all the files
+		// Start with the bootstrap at the top of the file
+		$contents = file_get_contents(APPPATH.'media/js/app/bootstrap.js');
+
+		// Concat all the component files (MVC)
 		$files = Kohana::list_files('media/js/app/components');
-		$contents = $this->recursive_concat_contents($files, 'js');
+		$contents .= $this->recursive_concat_contents($files, 'js');
 
 		$compile_dir = APPPATH.'media/js/app/compiled/';
 
@@ -58,7 +61,7 @@ class Minion_Task_App_Watch extends Minion_Task {
 				if ($extension !== $ext)
 					continue;
 
-				$content .= file_get_contents($path);
+				$content .= "\n".file_get_contents($path);
 			}
 		}
 
