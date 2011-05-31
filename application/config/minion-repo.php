@@ -103,4 +103,10 @@ return array(
 		'push_to'    => 'git@github.com:synapsestudios/kohana-admin-theme.git',
 		'checkout'   => 'origin/dev/1.0.x',
 	),
+	'modules/minion-tasks-cron' => array(
+		'path'       => MODPATH.'admin-theme',
+		'fetch_from' => 'https://github.com/synapsestudios/minion-tasks-cron.git',
+		'push_to'    => 'git@github.com:synapsestudios/minion-tasks-cron.git',
+		'checkout'   => 'origin/develop',
+	),
 );
