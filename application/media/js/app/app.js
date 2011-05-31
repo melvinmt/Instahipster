@@ -3,7 +3,7 @@
 	$(function() {
 		var body_id = $('body').attr('id');
 
-		if (app.controller[body_id].init)
+		if (app.controller[body_id] && app.controller[body_id].init)
 		{
 			app.controller[body_id].init();
 		}
