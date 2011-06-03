@@ -1,5 +1,9 @@
-@import "reset";
-@import "grid";
+$blueprint_grid_columns: 16;
+$blueprint_grid_width: 40px;
+
+@import "compass/reset";
+@import "blueprint/grid";
+
 @import "mixins";
 @import "colors";
 @import "fonts";
