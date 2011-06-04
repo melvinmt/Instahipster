@@ -28,7 +28,7 @@ class Minion_Task_App_Watch extends Minion_Task {
 		// Concat all the component files (MVC)
 		$files = Kohana::list_files('media/js/app/components');
 		$js .= $this->recursive_concat_contents($files, 'js');
-		$views = $this->recursive_concat_contents($files, 'mustache');
+		$views = trim($this->recursive_concat_contents($files, 'mustache'));
 
 		// Append the app.js file so it runs last
 		$js .= "\n".file_get_contents(APPPATH.'media/js/app/app.js');
