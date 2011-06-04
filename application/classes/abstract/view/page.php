@@ -10,6 +10,20 @@ abstract class Abstract_View_Page extends Abstract_View_Layout {
 		return parent::assets($assets);
 	}
 
+	public function js_array()
+	{
+		return array(
+			'base_url'    => URL::base(),
+			'environment' => Kohana::$environment_string,
+			'media_url'   => Media::url('/'),
+		);
+	}
+
+	public function js_export()
+	{
+		return json_encode($this->js_array());
+	}
+
 	public function i18n()
 	{
 		return function($string)
