@@ -2,7 +2,7 @@
 
 return array(
 	// @TODO: change this to be project-specific
-	'base_url'    => 'https://dev.vm/projecttemplate/',
+	'base_url'    => 'http://dev.vm/projecttemplate/',
 	'index_file'  => '',
 	'charset'     => 'utf-8',
 	'cache_dir'   => APPPATH.'cache',
