@@ -2,7 +2,7 @@
 RewriteEngine On
 
 # Set the project name to use through the rest of this file
-RewriteRule .* - [E=PROJECTNAME:example.com]
+RewriteRule .* - [E=PROJECTNAME:projecttemplate]
 
 # Force to always use the domain without the 'www' prefix (non-ssl)
 RewriteCond %{ENV:PROJECTNAME},%{HTTP_HOST} ^([^,]+),www\.\1
