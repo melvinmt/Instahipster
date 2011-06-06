@@ -4,18 +4,17 @@ class Minion_Task_App_Watch extends Minion_Task {
 
 	public function execute(array $config)
 	{
-		$watch_path = APPPATH.'media/js/app';
-		$events = '-e modify -e move -e create -e delete';
-		$compile_dir = APPPATH.'media/js/app/compiled/';
-		$cmd = 'inotifywait '.$events.' -r -q --format \'%w%f\' @"'.$compile_dir.'" "'.$watch_path.'"';
+		$ruby = exec('which ruby');
+		$cmd = $ruby.' '.APPPATH.'watch.rb';
 
 		// Compile right away
 		$this->compile();
 
-		Minion_CLI::write('Watching: '.$watch_path);
-		while ($altered = exec($cmd))
+		Minion_CLI::write('Watching: '.APPPATH.'media/js/app');
+		while (TRUE)
 		{
-			Minion_CLI::write($altered);
+			exec($cmd);
+			Minion_CLI::write('Changes detected, compiling...');
 			$this->compile();
 		}
 	}
