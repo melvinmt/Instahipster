@@ -104,7 +104,7 @@ return array(
 		'checkout'   => 'origin/dev/1.0.x',
 	),
 	'modules/minion-tasks-cron' => array(
-		'path'       => MODPATH.'admin-theme',
+		'path'       => MODPATH.'minion-tasks-cron',
 		'fetch_from' => 'https://github.com/synapsestudios/minion-tasks-cron.git',
 		'push_to'    => 'git@github.com:synapsestudios/minion-tasks-cron.git',
 		'checkout'   => 'origin/develop',
