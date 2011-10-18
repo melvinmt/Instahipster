@@ -84,21 +84,23 @@ Kohana::$environment_string = $env;
 /**
  * Attach a file reader to config. Multiple readers are supported.
  */
-Kohana_Config::instance()->attach(new Kohana_Config_File);
+
+Kohana::$config = new Config;
+Kohana::$config->attach(new Config_File);
 
 /**
  * Attach the environment specific configuration file reader to config if not in production.
  */
 if (Kohana::$environment != Kohana::PRODUCTION)
 {
-	Kohana_Config::instance()->attach(new Kohana_Config_File('config/environments/'.$env));
+	Kohana::$config->attach(new Config_File('config/environments/'.$env));
 }
 
 /**
  * Set the session save path.
  * @see  http://php.net/session-save-path
  */
-$path = Kohana_Config::instance()->load('session')->save_path;
+$path = Kohana::$config->load('session')->save_path;
 $real = realpath($path);
 if ( ! is_dir($real) OR ! is_writable($real))
 	throw new Kohana_Exception('Invalid session save path specified: :path',
@@ -121,24 +123,39 @@ unset($env, $path, $real);
  * - boolean  profile     enable or disable internal profiling               TRUE
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
-Kohana::init(Kohana_Config::instance()->load('init')->as_array());
+Kohana::init(Kohana::$config->load('init')->as_array());
 
 /**
  * Attach the file write to logging. Multiple writers are supported.
  */
-Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
+Kohana::$log->attach(new Log_File(APPPATH.'logs'));
 
 /**
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
-Kohana::modules(Kohana::config('modules')->as_array());
+Kohana::modules(Kohana::$config->load('modules')->as_array());
 
 /**
- * Set the routes. Each route must have a minimum of a name, a URI and a set of
- * defaults for the URI.
+ * Cookie salt is used to make sure cookies haven't been modified by the client
+ * @TODO: Change this for each project
  */
-Route::set('default', '(<controller>(/<action>(/<id>)))')
-	->defaults(array(
-		'controller' => 'main',
-		'action'     => 'index',
-	));
+Cookie::$salt = 'KEVEHQxU;CfHY32LbpHn(c(uctcexPjA';
+
+/**
+ * Include default routes. Default routes are located in application/routes/default.php
+ */
+include Kohana::find_file('routes', 'default');
+
+/**
+ * Include the routes for the current environment.
+ */
+
+if ($routes = Kohana::find_file('routes', Kohana::$environment))
+{
+	include $routes;
+}
+
+/**
+ * Enable modules. Modules are referenced by a relative or absolute path.
+ */
+Kohana::modules(Kohana::$config->load('modules')->as_array());
