@@ -20,7 +20,6 @@ return array(
 	'minion-cron'        => MODPATH.'minion-tasks-cron',
 	'notices'            => MODPATH.'notices',
 	'orm'                => MODPATH.'orm',
-	'pagination'         => MODPATH.'pagination',
 	'userguide'          => MODPATH.'userguide',
 	'yform'              => MODPATH.'yform',
 );
