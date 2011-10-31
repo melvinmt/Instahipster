@@ -80,7 +80,7 @@ class Format {
 		$object = date_create($date);
 
 		return ($object instanceof DateTime)
-			? $object->format(Kohana::config('dates.'.$format))
+			? $object->format(Kohana::$config->load('dates.'.$format))
 			: $default;
 	}
 

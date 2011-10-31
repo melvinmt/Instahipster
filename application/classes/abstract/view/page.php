@@ -2,7 +2,7 @@
 
 abstract class Abstract_View_Page extends Abstract_View_Layout {
 
-	public $title = 'Default Page Title';
+	public $title = 'Page';
 
 	public function assets($assets)
 	{

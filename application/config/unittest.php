@@ -6,15 +6,12 @@ return array(
 	'cc_report_path' => 'report',
 	'use_whitelist'  => FALSE,
 	'whitelist'      => array(
-		'app'        => TRUE,
-		'modules'    => array(TRUE),
-		'system'     => TRUE,
+
 	),
 	'use_blacklist' => TRUE,
 	'blacklist'      => array(
-		'app'        => TRUE,
-		'modules'    => array('userguide'),
-		'system'     => TRUE,
+		MODPATH.'userguide',
 	),
 	'db_connection' => 'default',
+);
 );

@@ -6,7 +6,7 @@
  * @category   Kostache
  * @author     Synapse Studios
  */
-abstract class Abstract_View_Base extends Kostache
+abstract class Abstract_View_Base extends Kostache_Layout
 {
 	/**
 	 * Assets object to add css/js groups to

@@ -22,7 +22,7 @@ abstract class Abstract_Controller_Website extends Controller {
 			$this->view = Kostache::factory('page/'.$controller_path)
 				->assets(new Assets);
 		}
-		catch (Kohana_View_Exception $x)
+		catch (Kohana_Exception $x)
 		{
 			/*
 			 * The View class could not be found, so the controller action is
@@ -40,11 +40,13 @@ abstract class Abstract_Controller_Website extends Controller {
 	 */
 	public function after()
 	{
-		// If content is NULL, then there is no View to render
-		if ($this->view === NULL)
-			throw new Kohana_View_Exception('There was no View created for this request.');
+		// Only try to render a view if we have one set
+		if ($this->view !== NULL)
+		{
+			$this->response->body($this->view);
+		}
 
-		$this->response->body($this->view);
+
 	}
 
 	/**
