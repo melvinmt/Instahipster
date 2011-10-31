@@ -2,7 +2,7 @@
 
 *A quick way to start new projects with basic configuration*
 
-- **Version:** 0.6.0
+- **Version:** 0.8.0
 - **URL:** <http://github.com/synapsestudios/kohana-projecttemplate>
 
 ## Description
@@ -12,52 +12,46 @@ This repository is intended to quickly set up a basic project with all the initi
 
 - ### system
     - **url** : `git://github.com/synapsestudios/kohana-core`
-    - **version** : `3.0.x`
+    - **version** : `3.2.x`
 - ### modules/acl
-	- **url** : 
-	- **version** : 
+	- **url** :
+	- **version** :
 - ### modules/auth
-	- **url** : 
-	- **version** : 
+	- **url** :
+	- **version** :
 - ### modules/csrf
-	- **url** : 
-	- **version** : 
+	- **url** :
+	- **version** :
 - ### modules/database
-	- **url** : 
-	- **version** : 
-- ### modules/doctrinemigrations
-	- **url** : 
-	- **version** : 
+	- **url** :
+	- **version** :
 - ### modules/email
-	- **url** : 
-	- **version** : 
+	- **url** :
+	- **version** :
 - ### modules/errors
-	- **url** : 
-	- **version** : 
+	- **url** :
+	- **version** :
 - ### modules/image
-	- **url** : 
-	- **version** : 
+	- **url** :
+	- **version** :
 - ### modules/kostache
-	- **url** : 
-	- **version** : 
+	- **url** :
+	- **version** :
 - ### modules/media
-	- **url** : 
-	- **version** : 
+	- **url** :
+	- **version** :
 - ### modules/notices
-	- **url** : 
-	- **version** : 
+	- **url** :
+	- **version** :
 - ### modules/orm
-	- **url** : 
-	- **version** : 
-- ### modules/pagination
-	- **url** : 
-	- **version** : 
+	- **url** :
+	- **version** :
 - ### modules/unittest
-	- **url** : 
-	- **version** : 
+	- **url** :
+	- **version** :
 - ### modules/userguide
-	- **url** : 
-	- **version** : 
+	- **url** :
+	- **version** :
 - ### modules/yform
-	- **url** : 
-	- **version** : 
+	- **url** :
+	- **version** :
