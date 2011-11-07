@@ -19,21 +19,6 @@
 [submodule "modules/userguide"]
 	path = modules/userguide
 	url = git://github.com/synapsestudios/kohana-userguide
-[submodule "modules/errors"]
-	path = modules/errors
-	url = git://github.com/synapsestudios/kohana-errors
-[submodule "modules/notices"]
-	path = modules/notices
-	url = git://github.com/synapsestudios/kohana-notices
-[submodule "modules/email"]
-	path = modules/email
-	url = git://github.com/synapsestudios/kohana-email.git
-[submodule "modules/acl"]
-	path = modules/acl
-	url = git://github.com/synapsestudios/kohana-acl.git
-[submodule "modules/csrf"]
-	path = modules/csrf
-	url = git://github.com/synapsestudios/kohana-csrf.git
 [submodule "modules/yform"]
 	path = modules/yform
 	url = git://github.com/synapsestudios/kohana-yform.git
@@ -55,15 +40,9 @@
 [submodule "modules/minion-tasks-migrations"]
 	path = modules/minion-tasks-migrations
 	url = git://github.com/synapsestudios/minion-tasks-migrations.git
-[submodule "modules/admin-theme"]
-	path = modules/admin-theme
-	url = git://github.com/synapsestudios/kohana-admin-theme.git
 [submodule "modules/minion-tasks-upgrade"]
 	path = modules/minion-tasks-upgrade
 	url = git://github.com/synapsestudios/minion-tasks-upgrade.git
 [submodule "modules/assets"]
 	path = modules/assets
 	url = git://github.com/synapsestudios/kohana-assets.git
-[submodule "modules/minion-tasks-cron"]
-	path = modules/minion-tasks-cron
-	url = git://github.com/synapsestudios/minion-tasks-cron.git
