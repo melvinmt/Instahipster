@@ -1,48 +1,48 @@
 [submodule "system"]
 	path = system
-	url = git://github.com/synapsestudios/kohana-core
+	url = git://github.com/Zeelot/kohana-core
 [submodule "modules/orm"]
 	path = modules/orm
-	url = git://github.com/synapsestudios/kohana-orm
+	url = git://github.com/Zeelot/kohana-orm
 [submodule "modules/database"]
 	path = modules/database
-	url = git://github.com/synapsestudios/kohana-database
+	url = git://github.com/Zeelot/kohana-database
 [submodule "modules/unittest"]
 	path = modules/unittest
-	url = git://github.com/synapsestudios/kohana-unittest
+	url = git://github.com/Zeelot/kohana-unittest
 [submodule "modules/auth"]
 	path = modules/auth
-	url = git://github.com/synapsestudios/kohana-auth
+	url = git://github.com/Zeelot/kohana-auth
 [submodule "modules/image"]
 	path = modules/image
-	url = git://github.com/synapsestudios/kohana-image
+	url = git://github.com/Zeelot/kohana-image
 [submodule "modules/userguide"]
 	path = modules/userguide
-	url = git://github.com/synapsestudios/kohana-userguide
+	url = git://github.com/Zeelot/kohana-userguide
 [submodule "modules/yform"]
 	path = modules/yform
-	url = git://github.com/synapsestudios/kohana-yform.git
+	url = git://github.com/Zeelot/kohana-yform.git
 [submodule "modules/kostache"]
 	path = modules/kostache
-	url = git://github.com/synapsestudios/kohana-kostache
+	url = git://github.com/Zeelot/kohana-KOstache
 [submodule "modules/media"]
 	path = modules/media
-	url = git://github.com/synapsestudios/kohana-media.git
+	url = git://github.com/Zeelot/kohana-media.git
 [submodule "modules/minion"]
 	path = modules/minion
-	url = git://github.com/synapsestudios/kohana-minion.git
+	url = git://github.com/Zeelot/minion-core.git
 [submodule "modules/minion-tasks-repo"]
 	path = modules/minion-tasks-repo
-	url = git://github.com/synapsestudios/minion-tasks-repo.git
+	url = git://github.com/Zeelot/minion-tasks-repo.git
 [submodule "modules/git"]
 	path = modules/git
-	url = git://github.com/synapsestudios/kohana-git.git
+	url = git://github.com/Zeelot/kohana-git.git
 [submodule "modules/minion-tasks-migrations"]
 	path = modules/minion-tasks-migrations
-	url = git://github.com/synapsestudios/minion-tasks-migrations.git
+	url = git://github.com/Zeelot/minion-tasks-migrations.git
 [submodule "modules/minion-tasks-upgrade"]
 	path = modules/minion-tasks-upgrade
-	url = git://github.com/synapsestudios/minion-tasks-upgrade.git
+	url = git://github.com/Zeelot/minion-tasks-upgrade.git
 [submodule "modules/assets"]
 	path = modules/assets
-	url = git://github.com/synapsestudios/kohana-assets.git
+	url = git://github.com/Zeelot/kohana-assets.git
