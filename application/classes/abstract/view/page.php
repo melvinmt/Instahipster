@@ -37,24 +37,6 @@ abstract class Abstract_View_Page extends Abstract_View_Layout {
 		return __($this->title);
 	}
 
-	public function notices()
-	{
-		$data = array();
-
-		foreach (Notices::get() as $array)
-		{
-			$message_path = $array['type'].'.'.$array['key'];
-			$data[] = array
-			(
-				'type'     => $array['type'],
-				'key'      => $array['key'],
-				'message'  => Kohana::message('notices', $message_path, $message_path),
-			);
-		}
-
-		return $data;
-	}
-
 	public function profiler()
 	{
 		return View::factory('profiler/stats');

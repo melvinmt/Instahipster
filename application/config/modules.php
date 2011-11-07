@@ -1,14 +1,9 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
 return array(
-	'acl'                => MODPATH.'acl',
-	'admin-theme'        => MODPATH.'admin-theme',
 	'assets'             => MODPATH.'assets',
 	'auth'               => MODPATH.'auth',
-	'csrf'               => MODPATH.'csrf',
 	'database'           => MODPATH.'database',
-	'email'              => MODPATH.'email',
-	// 'errors'          => MODPATH.'errors',
 	'git'                => MODPATH.'git',
 	'image'              => MODPATH.'image',
 	'kostache'           => MODPATH.'kostache',
@@ -17,8 +12,6 @@ return array(
 	'minion-migrations'  => MODPATH.'minion-tasks-migrations',
 	'minion-repo'        => MODPATH.'minion-tasks-repo',
 	'minion-upgrade'     => MODPATH.'minion-tasks-upgrade',
-	'minion-cron'        => MODPATH.'minion-tasks-cron',
-	'notices'            => MODPATH.'notices',
 	'orm'                => MODPATH.'orm',
 	'userguide'          => MODPATH.'userguide',
 	'yform'              => MODPATH.'yform',

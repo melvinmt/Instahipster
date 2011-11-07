@@ -61,7 +61,6 @@ abstract class Abstract_Controller_Website extends Controller {
 
 		if (Request::post_max_size_exceeded())
 		{
-			Notices::add('error', __('Max filesize of :max exceeded.', array(':max' => ini_get('post_max_size').'B')));
 			return FALSE;
 		}
 
@@ -72,7 +71,6 @@ abstract class Abstract_Controller_Website extends Controller {
 		if ($has_csrf AND ! $valid_csrf)
 		{
 			// CSRF was submitted but expired
-			Notices::add('error', __('This form has expired. Please try submitting it again.'));
 			return FALSE;
 		}
 
