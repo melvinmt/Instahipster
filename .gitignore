@@ -10,3 +10,4 @@ application/logs/*
 *.komodoproject
 .idea
 *.sublime-project
+vagrant/.vagrant
