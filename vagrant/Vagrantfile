@@ -20,5 +20,8 @@ Vagrant::Config.run do |config|
     chef.cookbooks_path = "cookbooks"
 
     chef.add_recipe("vagrant_main")
+    # Uncomment the recipes you would want this app to use
+    chef.add_recipe("vagrant_main::mysql")
+    chef.add_recipe("vagrant_main::rabbitmq")
   end
 end
