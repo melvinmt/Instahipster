@@ -30,7 +30,7 @@
 	url = git://github.com/Zeelot/kohana-media.git
 [submodule "modules/minion"]
 	path = modules/minion
-	url = git://github.com/Zeelot/minion-core.git
+	url = git://github.com/Zeelot/kohana-minion.git
 [submodule "modules/minion-tasks-repo"]
 	path = modules/minion-tasks-repo
 	url = git://github.com/Zeelot/minion-tasks-repo.git
