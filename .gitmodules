@@ -37,12 +37,6 @@
 [submodule "modules/git"]
 	path = modules/git
 	url = git://github.com/Zeelot/kohana-git.git
-[submodule "modules/minion-tasks-migrations"]
-	path = modules/minion-tasks-migrations
-	url = git://github.com/Zeelot/minion-tasks-migrations.git
-[submodule "modules/minion-tasks-upgrade"]
-	path = modules/minion-tasks-upgrade
-	url = git://github.com/Zeelot/minion-tasks-upgrade.git
 [submodule "modules/assets"]
 	path = modules/assets
 	url = git://github.com/Zeelot/kohana-assets.git
