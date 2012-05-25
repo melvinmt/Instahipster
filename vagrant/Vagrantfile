@@ -23,5 +23,11 @@ Vagrant::Config.run do |config|
     # Uncomment the recipes you would want this app to use
     chef.add_recipe("vagrant_main::mysql")
     chef.add_recipe("vagrant_main::rabbitmq")
+    chef.json = {
+      "xdebug" => {
+        "remote_enable" => "1",
+        "remote_host" => "33.33.33.1"
+      }
+    }
   end
 end
