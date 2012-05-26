@@ -23,7 +23,7 @@ return array(
 		'path'       => MODPATH.'git',
 		'fetch_from' => 'https://github.com/Zeelot/kohana-git.git',
 		'push_to'    => 'git@github.com:Zeelot/kohana-git.git',
-		'checkout'   => 'origin/dev/0.6.x',
+		'checkout'   => 'origin/dev/0.1.x',
 	),
 	'modules/image' => array(
 		'path'       => MODPATH.'image',
@@ -34,7 +34,7 @@ return array(
 	'modules/kostache' => array(
 		'path'       => MODPATH.'kostache',
 		'fetch_from' => 'https://github.com/zombor/KOstache.git',
-		'push_to'    => 'git://github.com/Zeelot/kohana-kostache.git',
+		'push_to'    => 'git@github.com:Zeelot/kohana-KOstache.git',
 		'checkout'   => 'v2.0.6',
 	),
 	'modules/media' => array(
@@ -47,7 +47,7 @@ return array(
 		'path'       => MODPATH.'minion',
 		'fetch_from' => 'https://github.com/kohana/minion.git',
 		'push_to'    => 'git@github.com:Zeelot/kohana-minion.git',
-		'checkout'   => 'origin/k3.2-v1.0',
+		'checkout'   => 'k3.2-v1.0',
 	),
 	'modules/minion-tasks-repo' => array(
 		'path'       => MODPATH.'minion-tasks-repo',
