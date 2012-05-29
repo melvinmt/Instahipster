@@ -35,7 +35,7 @@ return array(
 		'path'       => MODPATH.'kostache',
 		'fetch_from' => 'https://github.com/zombor/KOstache.git',
 		'push_to'    => 'git@github.com:Zeelot/kohana-KOstache.git',
-		'checkout'   => 'v2.0.6',
+		'checkout'   => 'c274d014ed32d2022bb3818296891b7851e1a42b', // Last 3.2.x compatible commit
 	),
 	'modules/media' => array(
 		'path'       => MODPATH.'media',
