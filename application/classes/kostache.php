@@ -3,7 +3,30 @@
 class Kostache extends Kohana_Kostache
 {
 	/**
-	 * Allows for things to be setup in View classes.
+	 * Factory method for Kostache views. Accepts a template path and an
+	 * optional array of partial paths.
+	 *
+	 * @param   string  template path
+	 * @param   array   partial paths
+	 * @return  Kostache
+	 * @throws  Kohana_Exception  if the view class does not exist
+	 */
+	public static function factory($path, array $partials = NULL)
+	{
+		$class = 'View_'.str_replace('/', '_', $path);
+
+		if ( ! class_exists($class))
+		{
+			throw new Kohana_Exception_ViewNotFound('View class does not exist: :class', array(
+				':class' => $class,
+			));
+		}
+
+		return new $class(NULL, $partials);
+	}
+
+	/**
+	 * Allows for things to be set up in View classes.
 	 * Avoids having to extend the constructor and pass around all those parameters.
 	 *
 	 * @return  void
