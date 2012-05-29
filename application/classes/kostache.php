@@ -26,6 +26,22 @@ class Kostache extends Kohana_Kostache
 	}
 
 	/**
+	 * Loads the template and partial paths.
+	 *
+	 * @param   string  template path
+	 * @param   array   partial paths
+	 * @return  void
+	 * @uses    Kostache::template
+	 * @uses    Kostache::partial
+	 */
+	public function __construct($template = NULL, array $partials = NULL)
+	{
+		parent::__construct($template, $partials);
+
+		$this->_initialize();
+	}
+
+	/**
 	 * Allows for things to be set up in View classes.
 	 * Avoids having to extend the constructor and pass around all those parameters.
 	 *
