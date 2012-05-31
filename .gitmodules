@@ -40,3 +40,6 @@
 [submodule "modules/assets"]
 	path = modules/assets
 	url = git://github.com/Zeelot/kohana-assets.git
+[submodule "vagrant/cookbooks"]
+	path = vagrant/cookbooks
+	url = git://github.com/Zeelot/vagrant-cookbooks.git
