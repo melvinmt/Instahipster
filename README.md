@@ -1,6 +1,6 @@
 # Vagrant
 
- The best way to view this on localhost is to use `vagrant`. After installation you need to point your local domain to `33.33.33.10` in your `hosts` file. After that, you `cd` to `/vagrant` and enter `vagrant up` in your console. After that's done you navigate to your local domain in your browser.
+ The best way to view this on localhost is to install `vagrant` and `VirtualBox` on your dev machine. After installation you need to point your local domain to `33.33.33.10` in your `hosts` file. After that, you `cd` to `/vagrant` and enter `vagrant up` in your console.Wait until it finishes and navigate to your local domain in your browser.
 
 # Configuration
 
