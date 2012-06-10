@@ -4,6 +4,7 @@
 
 # Configuration
 
-1.	Fill out your `client_id`, `client_secret` and `redirect_uri` in `application/config/viame-example.php`
-2.	Rename `application/config/viame-example.php` to `application/config/viame.php`
-3.	Go!
+1.	Register your via.me applicaton at [http://via.me/developers/apps]
+2.	Fill out your `client_id`, `client_secret` and `redirect_uri` in `application/config/viame-example.php`
+3.	Rename `application/config/viame-example.php` to `application/config/viame.php`
+4.	Go!
