@@ -9,7 +9,6 @@
 }
 
 body{
-	background:url(http://static.via.me.s3.amazonaws.com/assets/skin_new/bg_pattern_2x-f2a5a5837a29169fe5fc178fb19a6434.png) repeat scroll 0 0 transparent;
 	margin: 0px;
 }
 
@@ -35,3 +34,29 @@ h1.index_logo {
 		margin-right: 10px;
 	}
 }
+
+button {
+	cursor: pointer;
+}
+
+a{
+	color: #263886;
+}
+
+a:visited{
+	color: #263886;
+}
+
+a:active{
+	color: #263886;
+}
+
+.elem-wrapper {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+
+

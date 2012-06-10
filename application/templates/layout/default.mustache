@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="generator" content="{{app_version}}">
-	<title>{{title}}</title>
+	<title>Instahipster - Hipsterize your picture</title>
 
 	<script type="text/javascript">
 	// <![CDATA[
@@ -11,6 +11,16 @@
 		Kohana = {{#js_export}}{{{js_export}}}{{/js_export}}{{^js_export}}{}{{/js_export}};
 	// ]]>
 	</script>
+
+	<meta property="og:title" content="Instahipster"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://instahipster.me"/>
+    <meta property="og:image" content="http://instahipster.me/images/cover3.jpg"/>
+    <meta property="og:site_name" content="Instahipster"/>
+    <meta property="fb:admins" content="748976356,1079422871"/>
+    <meta property="og:description" content="Create (totally not mainstream) pictures"/>
+
+    <meta name="description" content="Create (totally not mainstream) pictures" />
 
 [[assets_head]]
 
@@ -23,5 +33,22 @@
 		<div id="footer"></div>
 	</div>
 	[[assets_body]]
+
+	<div style="color:#353535;font-size:0.8em;width:500px;margin-left:auto;margin-right:auto;text-align:center;margin-bottom:20px;clear:both;margin-top:20px;">
+		Made in 24 hrs by <a href="http://www.truthindesign.com">Jose Benavides</a> and <a href="http://melvinmt.com">Melvin Tercan</a> during <a href="http://xhack2012.com/">xHack 2012</a>
+	</div>
+	<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1199897-28']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </body>
 </html>

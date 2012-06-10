@@ -15,15 +15,16 @@
 			// disable auth button
 			this.$auth_button.attr('disabled', 'disabled');
 
-			url = 'https://api.via.me/oauth/authorize/?client_id=7tbat98a5fjiby3wef5lo1hix&redirect_uri=http://instahipster.com/oauth&response_type=code';
+			url = 'http://api.via.me/oauth/authorize/?client_id=7tbat98a5fjiby3wef5lo1hix&redirect_uri=http://instahipster.me/oauth&response_type=code';
 
-			parent.location = url;
+			window.location = url;
 
 		},
 		startHipster: function() {
 			url = '/hipsterize';
 			window.location = url;
 		}
+
 	});
 
 	views.page_hipsterize_index = Backbone.View.extend({

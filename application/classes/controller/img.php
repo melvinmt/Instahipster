@@ -9,13 +9,13 @@ class Controller_Img extends Abstract_Controller_Page {
 		if($id)
 		{
 
-			$tmp_dir = ini_get('upload_tmp_dir');
-
+			$tmp_dir = APPPATH.'/tmp';
+/*
 			if(!is_dir($tmp_dir)){
 				mkdir($tmp_dir, 0777, true);
 			} else if (!is_writable($tmp_dir)) {
 				chmod($tmp_dir, 0777);
-			}
+			}*/
 
 			$img_path = $tmp_dir.'/'.$id;
 

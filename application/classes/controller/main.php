@@ -26,15 +26,13 @@ class Controller_Main extends Abstract_Controller_Page {
 
 		}
 
-		echo Debug::vars($access_token);
-
 		parent::before();
 	}
 
 	public function action_index()
 	{
-
-
+		if($this->_logged_in)
+			$this->request->redirect('/hipsterize');
 	}
 
 	public function after()

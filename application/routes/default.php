@@ -12,6 +12,12 @@ Route::set('img', 'img/<id>', array('id' => '.*'))
 		'action'     => 'get',
 	));
 
+Route::set('pic', 'pic/<id>', array('id' => '.*'))
+	->defaults(array(
+		'controller' => 'pic',
+		'action'     => 'index',
+	));
+
 Route::set('default', '(<controller>(/<action>(/<id>)))', array('id' => '.*'))
 	->defaults(array(
 		'controller' => 'main',

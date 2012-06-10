@@ -1,0 +1,86 @@
+body{margin:0px; padding:0px; 
+	background:url('http://static.via.me.s3.amazonaws.com/assets/skin_new/bg_pattern_2x-f2a5a5837a29169fe5fc178fb19a6434.png');
+	font-family: 'Open Sans', "Arial",sans-serif;}
+
+a:link, a:visited{text-decoration:none;}
+
+/*==============================*/
+/*home styles */
+.logo{margin:50px;}
+.main_header{font-size:40px; display:block; margin-bottom:10px; font-weight:bold; color:#353535;}
+.homepic{background: url('http://instahipster.me/images/picbg.png') no-repeat; position:relative; display:block; width:200px; height:201px; float:left; margin:10px;}
+.homepicin{position:absolute; top:25px; left:10px; width:159px; height:140px; overflow: hidden;}
+.homepicimage{max-width:140px;}
+.hipblock{position:relative; width:900px; margin-bottom:100px;}
+
+.whitebutton{
+	font-size: 30px;
+	color: #000000;
+	padding: 5px 20px;
+	cursor:pointer;
+	background: -moz-linear-gradient(top, #ffffff 0%, #d1d1d1);
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),to(#d1d1d1));
+	border: 1px solid #b5b5b5;
+	border-radius: 3px;	-moz-border-radius: 3px;	-webkit-border-radius: 3px;	
+	-moz-box-shadow:0px 1px 3px rgba(000,000,000,0.5),inset 0px 0px 5px rgba(161,142,016,0);
+	-webkit-box-shadow:0px 1px 3px rgba(000,000,000,0.5),inset 0px 0px 5px rgba(161,142,016,0);
+	text-shadow:0px -1px 3px rgba(255,255,255,0.8),0px 1px 0px rgba(36,3,36,0.3);
+}
+.whitebutton a:link, .whitebutton a:visited{text-decoration:none;}
+
+/*========================*/
+/* get pic styles */
+#content{position:relative; width:900px; text-align:center;}
+#page{text-align:center;}
+.thumbnails{position:relative; display:block; width:158px; float:left; margin:10px;height:180px; background:url('http://www.instahipster.me/images/picbgsm.png') no-repeat; padding:10px;}
+.thumbnail_container{position:relative; display:block; overflow:hidden; width:140px; height:140px; left:3px; top:5px;}
+.thumbnail{position:absolute; left:-5px; top:-5px;}
+.thumbHolder{position:relative; width:800px; left:60px;}
+
+/*==================================*/
+/* picture maker styles */
+#screen {position:relative;
+	border:8px solid #fff; height:400px; margin:2em auto; overflow:hidden; width:400px;	}
+.draggable-wrapper{z-index:10; width:150px;}
+.ic_x{position:absolute; left:-5px; top:-5px; display:none; cursor:pointer; z-index:31;}
+
+.ui-wrapper {overflow:visible !important;}
+.ui-resizable-handle {background:url("http://www.instahipster.me/images/resize.png") no-repeat;  width:25px; height:25px; z-index:2;}
+.ui-rotatable-handle {background:url("http://www.instahipster.me/images/rotate.png") no-repeat;
+	cursor: pointer; height:30px; left: 50%; margin: 0 0 0 -15px; position: absolute; top: -25px; width: 30px;}
+.ui-rotatable-handle.clone {visibility:  hidden;}
+.stock{position:relative; float:left; margin-right:20px;
+width: 150px; 
+}
+.elem-wrapper{width:150px;}
+.thinl{top:30px;}
+
+
+/*Thumbnail styles */
+#thumbsList{position:relative; top:40px;}
+#thumbContainer{position:relative; height:120px; display:block; overflow:hidden; border:2px solid #b4b4b4; background-color:#fff; border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px;}
+div.hoverscroll {position:relative;}
+div.hoverscroll div.listcontainer {overflow:hidden;}
+div.hoverscroll div.fixed-listcontainer {overflow: hidden; float: left;}
+div.hoverscroll ul.list {list-style:none; margin:0;	padding:0;}
+
+div.hoverscroll ul.list li.item {display:block;	padding:0;}
+div.hoverscroll.horizontal ul.list li.item {float:left;}
+div.hoverscroll.horizontal.rtl ul.list li.item {float: right;}
+
+#my-list{position:relative; top:3px;}
+#my-list li img{margin:2px 13px 2px 13px; display:block; cursor:pointer;}
+
+#port_thumbs{background:url(http://www.truthindesign.com/hipster/img/bg_thumbs.png) repeat-x; height:120px; padding-top:4px; border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:2px; position:relative; width:900px;}
+#fade_left{position:absolute; top:5px; left:1px; z-index:10;}
+#fade_right{position:absolute; top:5px; right:0px; z-index:10;}
+
+/*===============================*/
+/* Pic done styles */
+.bodylogo{margin-bottom:0px;}
+.doneh{margin-top:0px;}
+.makeb{font-size:18px;}
+#endPicContainer{position:absolute; left:270px; top:0px; width:350px;}
+#endPic{position:relative; width:350px;}
+#buttonBlock{position:absolute; left:650px; top:0px;}
+#livesHere{ text-align:center;}

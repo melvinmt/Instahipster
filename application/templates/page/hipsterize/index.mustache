@@ -1,21 +1,36 @@
-<div>
-	<form action="/hipsterize/upload" id="upload_pic" method="post" enctype="multipart/form-data">
-		<h2>Upload a new picture</h2>
-
-		<input type="file" name="file" id="file_select"/> <input type="submit" id="submit_btn"/>
-	</form>
-</div>
+    <a href="/logout" title="Hipsterize your picture"><img src='http://www.instahipster.me/images/instahipster.png' /></a>
 
 <div>
-
-	<h2>or choose an existing picture from your via.me feed</h2>
-
-	{{#viame_pictures}}
-		<div class="thumbnails">
-			<div class="thumbnail">
-				<a href="{{edit_url}}" title="Use this picture!"><img src="{{thumb_url}}" border="0" /></a>
-			</div>
+			<form action="/hipsterize/upload" id="upload_pic" method="post" enctype="multipart/form-data">
+				<h2>Upload a new picture</h2>
+		
+				<input type="file" name="file" id="file_select"/> <input type="submit" value="Use this one" id="submit_btn"/>
+			</form>
 		</div>
-	{{/viame_pictures}}
+		
 
-</div>
+	{{#has_pictures}}
+		<div>
+		<br><br>
+			<h2>or choose a picture from via.me</h2>
+		
+		<div class="thumbHolder">
+			{{#pictures}}
+
+				<div class="thumbnails">
+					<div class="thumbnail_container">
+					  <div class="thumbnail">
+						<a href="{{edit_url}}" title="Use this picture!"><img src="{{thumb_url}}" border="0" /></a>
+					  </div>
+				    </div>
+				</div>
+
+			{{/pictures}}
+
+				<div style="clear:both;"></div>
+			</div>
+
+		</center>
+		</div>		
+
+	{{/has_pictures}}
