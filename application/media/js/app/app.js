@@ -26,6 +26,19 @@
 		}
 	});
 
+	views.page_hipsterize_index = Backbone.View.extend({
+		events: {
+			'change #file_select': 'submitForm'
+		},
+		initialize: function() {
+
+		},
+		submitForm: function() {
+			$('#submit_btn').attr('disabled', 'disabled');
+			$('#upload_pic').submit();
+		}
+	});
+
 	// Initialize the app here
 	$(function() {
 		var $body = $('body');
