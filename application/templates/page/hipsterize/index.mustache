@@ -1,0 +1,21 @@
+<div>
+	<form action="/hipsterize/upload" method="post" enctype="multipart/form-data">
+		<h2>Upload a new picture</h2>
+
+		<input type="file" name="file"/> <input type="submit" />
+	</form>
+</div>
+
+<div>
+
+	<h2>or choose an existing picture from your via.me feed</h2>
+
+	{{#viame_pictures}}
+		<div class="thumbnails">
+			<div class="thumbnail">
+				<a href="{{edit_url}}" title="Use this picture!"><img src="{{thumb_url}}" border="0" /></a>
+			</div>
+		</div>
+	{{/viame_pictures}}
+
+</div>

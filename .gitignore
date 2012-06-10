@@ -11,3 +11,4 @@ application/logs/*
 .idea
 *.sublime-project
 vagrant/.vagrant
+application/config/viame.php

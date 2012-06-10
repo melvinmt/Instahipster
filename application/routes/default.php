@@ -4,7 +4,15 @@
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
-Route::set('default', '(<controller>(/<action>(/<id>)))')
+
+
+Route::set('img', 'img/<id>', array('id' => '.*'))
+	->defaults(array(
+		'controller' => 'img',
+		'action'     => 'get',
+	));
+
+Route::set('default', '(<controller>(/<action>(/<id>)))', array('id' => '.*'))
 	->defaults(array(
 		'controller' => 'main',
 		'action'     => 'index',

@@ -1,9 +1,4 @@
-# Project Template
+# Installation
 
-*A quick way to start new projects with basic configuration*
-
-- **Version:** 0.8.0
-- **URL:** <http://zeelot3k.com/kohana-projecttemplate/>
-
-## Description
-This repository is intended to quickly set up a basic project with all the initial repetitive tasks done for you.
+1.	Rename `application/config/viame-example.php` to `application/config/viame.php`
+2.	Fill out your `client_id`, `client_secret` and `redirect_uri`

@@ -1,8 +1,8 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 $js_app_file = Kohana::$environment === Kohana::DEVELOPMENT
-	? 'js/app/compiled/app.js'
-	: 'js/app/compiled/app.min.js';
+	? 'js/compiled/app.js'
+	: 'js/compiled/app.min.js';
 
 return array
 (
@@ -15,5 +15,6 @@ return array
 		array('script', Media::url('js/underscore-min.js'), 'body', 10),
 		array('script', Media::url('js/backbone-min.js'), 'body', 20),
 		array('script', Media::url($js_app_file), 'body', 40),
+		array('style', 'http://fonts.googleapis.com/css?family=Lobster+Two', 'head')
 	),
 );

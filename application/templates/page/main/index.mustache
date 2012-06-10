@@ -1,1 +1,21 @@
-Hello New World!
+{{^logged_in}}
+	<h1 class="index_logo">
+		Instahipster
+	</h1>
+
+	<button id="authenticate">Get started</button>
+{{/logged_in}}
+
+{{#logged_in}}
+
+	<p>
+		<a href="logout">log out</a>
+	</p>
+
+	<div>
+		<button id="hipsterize">hipsterize</button>
+	</div>
+
+
+{{/logged_in}}
+

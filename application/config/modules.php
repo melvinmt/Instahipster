@@ -13,4 +13,5 @@ return array(
 	'orm'                => MODPATH.'orm',
 	'userguide'          => MODPATH.'userguide',
 	'yform'              => MODPATH.'yform',
+	'minion-tasks-media' => MODPATH.'minion-tasks-media',
 );
