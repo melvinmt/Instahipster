@@ -16,13 +16,11 @@ function showHandles(){
     
     if(acheck==false){
       //alert("new");
-     var theID = $(this).attr('id');
-     $("#"+theID).rotatable();
-     
-     $(this).find(".elem-wrapper").resizable({aspectRatio: true, handles:'se'});
-     $(this).find(".ic_x").show();
-
-     $(this).addClass('hasHandles');
+      var theID = $(this).attr('id');
+      $("#"+theID).rotatable();     
+      $(this).find(".elem-wrapper").resizable({aspectRatio: true, handles:'se'});
+      $(this).find(".ic_x").show();
+      $(this).addClass('hasHandles');
     }
 
     else{
@@ -35,12 +33,14 @@ function showHandles(){
   lastPic = "#"+$(this).attr('id');
 }
 //============================
-  //this gets the degree of rotation and scale
-  function getRotation(el){
-
+//this gets the degree of rotation and scale
+function getRotation(el){
+  
     var el = document.getElementById($(el).attr('id'));
+    $(el).animate({left:'-=1',},0);
+    $(el).animate({left:'+=1',},0);
 
-    var st = window.getComputedStyle(el, null);
+    var st = window.getComputedStyle(el, null); 
     var tr = st.getPropertyValue("-webkit-transform") ||
          st.getPropertyValue("-moz-transform") ||
          st.getPropertyValue("-ms-transform") ||
@@ -48,43 +48,41 @@ function showHandles(){
          st.getPropertyValue("transform") ||
          "fail...";
 
+    //if there is no tr then rotate is 0 and scale is 1
+  if(tr!='none'){
+       if(jQuery.browser.webkit){tr = $(el).css("-webkit-transform");}
+       else if(jQuery.browser.mozilla){tr = $(el).css("-moz-transform");}
+       else if(jQuery.browser.msie){tr = $(el).css("-ms-transform");}
+       else if(jQuery.browser.opera){tr = $(el).css("-o-transform");}
+       else{tr = $(el).css("transform");}
 
- //     tr= $(el).css("-moz-transform");
- if(jQuery.browser.webkit){tr = $(el).css("-webkit-transform");}
- else if(jQuery.browser.mozilla){tr = $(el).css("-moz-transform");}
- else if(jQuery.browser.msie){tr = $(el).css("-ms-transform");}
- else if(jQuery.browser.opera){tr = $(el).css("-o-transform");}
- else{tr = $(el).css("transform");}
+       console.log('Matrix: ' + tr);
+       var values = tr.split('(')[1];
+     values = values.split(')')[0];
+       values = values.split(',');
+       var a = values[0];
+       var b = values[1];
+       var c = values[2];
+       var d = values[3];
 
-// With rotate(30deg)...
-// matrix(0.866025, 0.5, -0.5, 0.866025, 0px, 0px)
-console.log('Matrix: ' + tr);
-
-// rotation matrix - http://en.wikipedia.org/wiki/Rotation_matrix
-
-var values = tr.split('(')[1];
-    values = values.split(')')[0];
-    values = values.split(',');
-var a = values[0];
-var b = values[1];
-var c = values[2];
-var d = values[3];
-
-var scale = Math.sqrt(a*a + b*b);
-var angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
-
-// works!
-//alert('Rotate: ' + angle + 'deg.');
-return angle;
+       var scale = Math.sqrt(a*a + b*b);
+       var angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
   }
-  //==============
+  else{angle=0;}
 
+    //alert('Rotate: ' + angle + 'deg.');
+    return angle;
+}
 
 //=========================
 //this gets the coordinates and then sends them via ajax
 function getCoords(){
   //go through all of the added elements
   
+  //first we get the offset of the main pic
+  var mainoffset = $('#mainPic').offset();
+    //alert("main pic left: " + mainoffset.left + ", top: " + mainoffset.top);
+
   var details = {
     mainPic: $('#mainPic').attr('src'),
     cliparts: []
@@ -93,68 +91,40 @@ function getCoords(){
   var detail;
   
   $('.draggable-wrapper').each(function() {
+
     detail = {};
     detail.url = $(this).find('.elem-wrapper').attr('src');
     
-    var position = $(this).position();
-        
-    detail.x = position.left;
-    detail.y = position.top;
+    var position = $(this).offset();
+    
+    //now we use the main pic to 0 out the offset and get the true relative x and y of the elements
+    var x = position.left-mainoffset.left;
+    var y = position.top -mainoffset.top;
+    //alert(x+" element "+y);
+    
+    detail.x = x;
+    detail.y = y;
     
     var theID = "#"+$(this).attr('id');
         var theAngle = getRotation(theID);
 
-    detail.rotation = theAngle;
-    
+    detail.rotation = theAngle;   
     var oldWidth = 150;
     var newWidth = parseInt($(this).find('.elem-wrapper').css('width'));
     
-    detail.scale = newWidth/oldWidth;
-    
-    details.cliparts.push(detail);
+    detail.scale = newWidth/oldWidth;   
+    details.cliparts.push(detail);  
     
   });
   
   details = JSON.stringify(details);
   console.log(details);
-  /*
-
-    var details='{\n  "mainPic":"';
-    details+= $('#mainPic').attr('src'); 
-    details+= '",\n"clipart": [\n';
-    $('.draggable-wrapper').each(function() {
-
-      //first get the source
-      details+='{"url":"'+$(this).find('.elem-wrapper').attr('src')+'",\n';
-
-      //then the x and y
-          var position = $(this).position();
-          details+='"x":"'+ position.left + '",\n"y": "' + position.top+'",\n';
-
-          //and rotate
-      var theID = "#"+$(this).attr('id');
-          var theAngle = getRotation(theID);
-          details+='"rotation":"'+theAngle+'",\n';
-
-      //now scale
-      //initial width is 150. if different CHANGE HERE
-      var oldWidth = 150;
-      var newWidth = parseInt($(this).find('.elem-wrapper').css('width'));
-         
-      var scale = newWidth/oldWidth;
-      details+='"scale":"'+scale+'",},\n';
-    //==============
-    
-     });
-    //now finish the json
-      details+=']\n}';
-     alert(details);*/
-  
-
+  //alert(details);
    //now send this to the processor and then go to the next page.
    //we will get a url returned and put that in the next page.
    //url to use is hipsterize/save
    //ajax bit
+   
     $.ajax({
         type: "POST",
         url: "/hipsterize/save",
@@ -162,31 +132,23 @@ function getCoords(){
       json: details
     },
         success: function(msg){
-      if (msg.via_id)
-         {
+      if (msg.via_id){
             window.location = 'http://via.me/-' + msg.via_id;
           }
-      else
-      {
-        
+      else{       
         alert('Something went wrong. Please try again');
-          $('#submit').removeAttr('disabled').text('Done!');
+        $('#submit').removeAttr('disabled').text('Done!');
       }
-      
-      // window.location.replace("http://www.truthindesign.com/hipster/saved.php?thePic="+msg);
-
       //redirect to the next page
      }//success function ender
       });//ajax ender
   
     $('#submit').attr('disabled', 'disabled').text('Processing..');
-
     //end ajax bit
-
+    
 }
 
 $(document).ready(function() {
-    
 
     var imnum=0;
     var picWidth;
@@ -198,15 +160,15 @@ $(document).ready(function() {
         picWidth = this.width;   // Note: $(this).width() will not
         picHeight = this.height; // work for in memory images.
 
-         $('#screen').width(picWidth);
-         $('#screen').height(picHeight);
-
+        $('#screen').width(picWidth);
+        $('#screen').height(picHeight);
     });
 
     $('#mainPic').bind('dragstart', function(event) { event.preventDefault(); });
-/*
+
     //setup the logo pic
     $("#watermark").css('position','absolute');
+    $('#watermark').css('transform', 'rotate(1deg)');
 
         //get the dimensions of the main pic and put the new images in the center
         var thex = Math.floor(picWidth/2)-100;
@@ -220,7 +182,7 @@ $(document).ready(function() {
         var newID = "clip"+imnum;
         $("(#watermark").attr('id',newID);
 
-      imnum++;*/
+      imnum++;
 
 
     //===========================
@@ -247,28 +209,22 @@ $(document).ready(function() {
         //add it to the screen
         $(clone).prependTo('#screen');
         $(clone).draggable();
-
       $(clone).mousedown(showHandles);
-  
-    // $(clone).bind('dragstart', function(event) { event.preventDefault(); });
-
+    
       imnum++;
       });
 
       //========================
       //this hides all handles when the user clicks on the main image
       $("#mainPic").live("click", function(){ 
-          $(".ui-rotatable-handle").hide();
+        $(".ui-rotatable-handle").hide();
         $(".ui-resizable-handle").hide();
         $(".ic_x").hide();
-         });
+      });
 
       //=====================
       //this will kill the element on the canvas 
-      $('.ic_x').live("mousedown",function(){
-        $(this).parent().remove();
-      });
-
+      $('.ic_x').live("mousedown",function(){$(this).parent().remove();});
 
       //====================
       $('#thumbsList').animate({top: '-=40', opacity: 1,}, 150, 'linear');
@@ -285,10 +241,7 @@ $(document).ready(function() {
         // Starting the movement automatically at loading
         // @param direction: right/bottom = 1, left/top = -1
         // @param speed: Speed of the animation (scrollPosition += direction * speed)
-        var direction = -1,
-            speed = 3;
+        var direction = -1, speed = 3;
 
       myList[0] && myList[0].startMoving(direction, speed);
-
-
 });
