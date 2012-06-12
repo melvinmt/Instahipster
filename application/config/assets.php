@@ -20,7 +20,7 @@ return array
 		array('script', Media::url('js/vendor/ui/jquery.ui.draggable.js'), 'body', 14),
 		array('script', Media::url('js/vendor/ui/jquery.ui.resizable.js'), 'body', 15),
 		array('script', Media::url('js/vendor/ui/jquery.ui.rotatable.js'), 'body', 16),
-		array('script', 'http://www.truthindesign.com/v2/js/jquery.hoverscroll.js', 'body',17),
+		array('script', Media::url('js/vendor/jquery.hoverscroll.js'), 'body', 17),
 		array('script', Media::url('js/vendor/hipsterscript.js'), 'body', 18),
 		array('script', Media::url('js/mustache.js'), 'body', 10),
 		array('script', Media::url('js/underscore-min.js'), 'body', 10),
